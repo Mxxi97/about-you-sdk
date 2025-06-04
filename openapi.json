@@ -6,55 +6,6 @@
     "description": "REST API to manage products and related data in the ABOUT YOU Seller Center."
   },
   "paths": {
-    "/api/v1/webhooks/types": {
-      "get": {
-        "operationId": "scapi_app_endpoints_webhook_api_get_webhook_event_types",
-        "summary": "Get Webhook Event Types",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/WebhookEventSchema"
-                  },
-                  "title": "Response",
-                  "type": "array"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestSchema"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadRequestSchema"
-                }
-              }
-            }
-          }
-        },
-        "tags": ["Webhooks"],
-        "security": [
-          {
-            "APIKeyAuth": []
-          }
-        ]
-      }
-    },
     "/api/v1/webhooks/": {
       "get": {
         "operationId": "scapi_app_endpoints_webhook_api_get_webhook_subscriptions",

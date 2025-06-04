@@ -1553,36 +1553,6 @@ export type ReturnRequestSchema = {
     items: Array<ReturnItemSchema>;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api/v1/webhooks/types';
-};
-
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors = {
-    /**
-     * Bad Request
-     */
-    400: BadRequestSchema;
-    /**
-     * Unauthorized
-     */
-    401: BadRequestSchema;
-};
-
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesError = ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors[keyof ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors];
-
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses = {
-    /**
-     * Response
-     * OK
-     */
-    200: Array<WebhookEventSchema>;
-};
-
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponse = ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses[keyof ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses];
-
 export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsData = {
     body?: never;
     path?: never;
