@@ -28,12 +28,7 @@ export type BadRequestSchema = {
 /**
  * EventType
  */
-export enum EventType {
-    ORDER_CREATED = 'order.created',
-    ORDER_CANCELLED = 'order.cancelled',
-    ORDER_SHIPPED = 'order.shipped',
-    ORDER_RETURNED = 'order.returned'
-}
+export type EventType = 'order.created' | 'order.cancelled' | 'order.shipped' | 'order.returned';
 
 /**
  * WebhookSubscriptionSchema
@@ -42,7 +37,7 @@ export type WebhookSubscriptionSchema = {
     /**
      * Events
      */
-    events: Array<EventType2>;
+    events: Array<EventType>;
     /**
      * Url
      */
@@ -64,7 +59,7 @@ export type WebhookSubscriptionSchema = {
     /**
      * Created At
      */
-    created_at: Date;
+    created_at: string;
 };
 
 /**
@@ -74,7 +69,7 @@ export type SecretWebhookSubscriptionSchema = {
     /**
      * Events
      */
-    events: Array<EventType2>;
+    events: Array<EventType>;
     /**
      * Url
      */
@@ -96,7 +91,7 @@ export type SecretWebhookSubscriptionSchema = {
     /**
      * Created At
      */
-    created_at: Date;
+    created_at: string;
     /**
      * Client Secret
      */
@@ -110,7 +105,7 @@ export type WebhookSubscriptionPostSchema = {
     /**
      * Events
      */
-    events: Array<EventType2>;
+    events: Array<EventType>;
     /**
      * Url
      */
@@ -128,7 +123,7 @@ export type WebhookSubscriptionPatchSchemaPatch = {
     /**
      * Events
      */
-    events?: Array<EventType2> | null;
+    events?: Array<EventType> | null;
     /**
      * Url
      */
@@ -164,11 +159,11 @@ export type GetOrderSchema = {
     /**
      * Created At
      */
-    created_at: Date;
+    created_at: string;
     /**
      * Updated At
      */
-    updated_at: Date;
+    updated_at: string;
     /**
      * Customer Key
      * Reference key of the customer (MAPI: customer_key)
@@ -344,7 +339,7 @@ export type OrderCreatedWebhookSchema = {
      * Timestamp
      * UTC timestamp when the event was created
      */
-    timestamp?: Date;
+    timestamp?: string;
     /**
      * Order payload of the triggered event
      */
@@ -427,7 +422,7 @@ export type OrderCancelledWebhookSchema = {
      * Timestamp
      * UTC timestamp when the event was created
      */
-    timestamp?: Date;
+    timestamp?: string;
     /**
      * Order payload of the triggered event
      */
@@ -457,7 +452,7 @@ export type OrderShippedWebhookSchema = {
      * Timestamp
      * UTC timestamp when the event was created
      */
-    timestamp?: Date;
+    timestamp?: string;
     /**
      * Order payload of the triggered event
      */
@@ -487,7 +482,7 @@ export type OrderReturnedWebhookSchema = {
      * Timestamp
      * UTC timestamp when the event was created
      */
-    timestamp?: Date;
+    timestamp?: string;
     /**
      * Order payload of the triggered event
      */
@@ -544,12 +539,7 @@ export type Input = {
 /**
  * Status
  */
-export enum Status2 {
-    PENDING = 'pending',
-    PROCESSING = 'processing',
-    COMPLETED = 'completed',
-    FAILED = 'failed'
-}
+export type Status = 'pending' | 'processing' | 'completed' | 'failed';
 
 /**
  * GetProductItemSchema
@@ -888,11 +878,7 @@ export type UpdateProductStatusResponseSchema = {
 /**
  * ProductStatusChoices
  */
-export enum ProductStatusChoices {
-    PUBLISHED = 'published',
-    INACTIVE = 'inactive',
-    DRAFT = 'draft'
-}
+export type ProductStatusChoices = 'published' | 'inactive' | 'draft';
 
 /**
  * UpdateProductStatusItemSchema
@@ -906,7 +892,7 @@ export type UpdateProductStatusItemSchema = {
     /**
      * Status you want to set for the given product
      */
-    status: ProductStatusChoices2;
+    status: ProductStatusChoices;
 };
 
 /**
@@ -1338,50 +1324,7 @@ export type ReturnResultsSchema = {
 /**
  * Carrier
  */
-export enum Carrier {
-    DHL_STD_NATIONAL = 'DHL_STD_NATIONAL',
-    HERMES_KLV = 'HERMES_KLV',
-    HERMES_STD_NATIONAL = 'HERMES_STD_NATIONAL',
-    DHL_AUT = 'DHL_AUT',
-    DHL_POST_AUT = 'DHL_POST_AUT',
-    HERMES_POST_AUT = 'HERMES_POST_AUT',
-    POST_CH = 'POST_CH',
-    QUICK_CH = 'QUICK_CH',
-    POST_NL = 'POST_NL',
-    DHL_NL = 'DHL_NL',
-    DHL_PL = 'DHL_PL',
-    PPL = 'PPL',
-    ZASIL_CZ = 'ZASIL_CZ',
-    BPOST_BE = 'BPOST_BE',
-    DHL_BPOST_BEL = 'DHL_BPOST_BEL',
-    COLI_FR = 'COLI_FR',
-    UB_GLS_DK = 'UB_GLS_DK',
-    UB_CORR_ES = 'UB_CORR_ES',
-    DS_TB_ES = 'DS_TB_ES',
-    UB_CTT_PT = 'UB_CTT_PT',
-    DS_TB_PT = 'DS_TB_PT',
-    ECONT_BG = 'ECONT_BG',
-    ACS_CY = 'ACS_CY',
-    UB_OMNIVA_EE = 'UB_OMNIVA_EE',
-    UB_POST_FI = 'UB_POST_FI',
-    UB_TAXY_GR = 'UB_TAXY_GR',
-    ACS_GR = 'ACS_GR',
-    POST_HR = 'POST_HR',
-    POST_HU = 'POST_HU',
-    GLS_HU = 'GLS_HU',
-    UB_FAST_IE = 'UB_FAST_IE',
-    POST_IT = 'POST_IT',
-    DS_TB_IT = 'DS_TB_IT',
-    UB_OMNIVA_LT = 'UB_OMNIVA_LT',
-    BPOST_LU = 'BPOST_LU',
-    UB_OMNIVA_LV = 'UB_OMNIVA_LV',
-    UB_POST_NO = 'UB_POST_NO',
-    FAN_RO = 'FAN_RO',
-    UB_DHL_SE = 'UB_DHL_SE',
-    POST_SI = 'POST_SI',
-    POST_SK = 'POST_SK',
-    ZASIL_SK = 'ZASIL_SK'
-}
+export type Carrier = 'DHL_STD_NATIONAL' | 'HERMES_KLV' | 'HERMES_STD_NATIONAL' | 'DHL_AUT' | 'DHL_POST_AUT' | 'HERMES_POST_AUT' | 'POST_CH' | 'QUICK_CH' | 'POST_NL' | 'DHL_NL' | 'DHL_PL' | 'PPL' | 'ZASIL_CZ' | 'BPOST_BE' | 'DHL_BPOST_BEL' | 'COLI_FR' | 'UB_GLS_DK' | 'UB_CORR_ES' | 'DS_TB_ES' | 'UB_CTT_PT' | 'DS_TB_PT' | 'ECONT_BG' | 'ACS_CY' | 'UB_OMNIVA_EE' | 'UB_POST_FI' | 'UB_TAXY_GR' | 'ACS_GR' | 'POST_HR' | 'POST_HU' | 'GLS_HU' | 'UB_FAST_IE' | 'POST_IT' | 'DS_TB_IT' | 'UB_OMNIVA_LT' | 'BPOST_LU' | 'UB_OMNIVA_LV' | 'UB_POST_NO' | 'FAN_RO' | 'UB_DHL_SE' | 'POST_SI' | 'POST_SK' | 'ZASIL_SK';
 
 /**
  * ShipmentItemSchema
@@ -1395,7 +1338,7 @@ export type ShipmentItemSchema = {
     /**
      * Carrier of the shipment
      */
-    carrier_key: Carrier2;
+    carrier_key: Carrier;
     /**
      * Shipment Tracking Key
      * Tracking key of the shipment
@@ -1461,7 +1404,7 @@ export type GetOrderParams = {
      * Carrier Key
      * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AUT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_CTT_PT", "DS_TB_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
      */
-    carrier_key?: Carrier2 | null;
+    carrier_key?: Carrier | null;
     /**
      * Shop country
      * Shop country to search for
@@ -1480,34 +1423,23 @@ export type GetOrderParams = {
      * Orders from
      * Orders from date to filter by
      */
-    orders_from?: Date | null;
+    orders_from?: string | null;
     /**
      * Orders to
      * Orders to date to filter by
      */
-    orders_to?: Date | null;
+    orders_to?: string | null;
 };
 
 /**
  * StatusChoices
  */
-export enum OrdersAppModelsOrderOrderStatusChoices2 {
-    OPEN = 'open',
-    SHIPPED = 'shipped',
-    CANCELLED = 'cancelled',
-    RETURNED = 'returned',
-    MIXED = 'mixed'
-}
+export type OrdersAppModelsOrderOrderStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned' | 'mixed';
 
 /**
  * StatusChoices
  */
-export enum OrdersAppModelsOrderItemOrderItemStatusChoices2 {
-    OPEN = 'open',
-    SHIPPED = 'shipped',
-    CANCELLED = 'cancelled',
-    RETURNED = 'returned'
-}
+export type OrdersAppModelsOrderItemOrderItemStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
 
 /**
  * PagedGetOrderSchema
@@ -2335,7 +2267,7 @@ export type ScapiAppEndpointsOrderApiGetOrdersData = {
          * Carrier Key
          * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AUT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_CTT_PT", "DS_TB_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
          */
-        carrier_key?: Carrier2 | null;
+        carrier_key?: Carrier | null;
         /**
          * Shop country
          * Shop country to search for
@@ -2354,12 +2286,12 @@ export type ScapiAppEndpointsOrderApiGetOrdersData = {
          * Orders from
          * Orders from date to filter by
          */
-        orders_from?: Date | null;
+        orders_from?: string | null;
         /**
          * Orders to
          * Orders to date to filter by
          */
-        orders_to?: Date | null;
+        orders_to?: string | null;
         /**
          * Page
          * Page number to retrieve items from
