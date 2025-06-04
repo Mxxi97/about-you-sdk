@@ -1,0 +1,26 @@
+{
+  "name": "about-you-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Mxxi97/about-you-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/Mxxi97/about-you-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mxxi97/about-you-sdk.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "openapi-ts": "openapi-ts"
+  },
+  "devDependencies": {
+    "@hey-api/client-axios": "^0.8.0",
+    "@hey-api/openapi-ts": "^0.70.0",
+    "prettier": "3.5.3"
+  }
+}
