@@ -26,6 +26,9 @@ jobs:
       - name: Fetch latest OpenAPI spec
         run: curl -L https://partner.aboutyou.com/api/v1/openapi.json -o openapi.json
 
+      - name: Log OpenAPI spec
+        run: cat openapi.json
+
       - name: Clean operationId fields
         run: 'sed -i ''/"operationId": "scapi_app_endpoints_.*_api_.*",/d'' openapi.json'
 
