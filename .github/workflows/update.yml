@@ -57,6 +57,11 @@ jobs:
             echo "No changes detected in OpenAPI client."
           fi
 
+      - name: Verify npm registry authentication
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Commit and tag release
         if: steps.git-check.outputs.changed == 'true'
         run: |
