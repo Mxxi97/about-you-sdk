@@ -1485,14 +1485,14 @@ export type ReturnRequestSchema = {
     items: Array<ReturnItemSchema>;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesData = {
+export type GetApiV1WebhooksTypesData = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/types';
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors = {
+export type GetApiV1WebhooksTypesErrors = {
     /**
      * Bad Request
      */
@@ -1503,9 +1503,9 @@ export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesError = ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors[keyof ScapiAppEndpointsWebhookApiGetWebhookEventTypesErrors];
+export type GetApiV1WebhooksTypesError = GetApiV1WebhooksTypesErrors[keyof GetApiV1WebhooksTypesErrors];
 
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses = {
+export type GetApiV1WebhooksTypesResponses = {
     /**
      * Response
      * OK
@@ -1513,16 +1513,16 @@ export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses = {
     200: Array<WebhookEventSchema>;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponse = ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses[keyof ScapiAppEndpointsWebhookApiGetWebhookEventTypesResponses];
+export type GetApiV1WebhooksTypesResponse = GetApiV1WebhooksTypesResponses[keyof GetApiV1WebhooksTypesResponses];
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsData = {
+export type GetApiV1WebhooksData = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/';
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsErrors = {
+export type GetApiV1WebhooksErrors = {
     /**
      * Bad Request
      */
@@ -1533,9 +1533,9 @@ export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsError = ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsErrors[keyof ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsErrors];
+export type GetApiV1WebhooksError = GetApiV1WebhooksErrors[keyof GetApiV1WebhooksErrors];
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsResponses = {
+export type GetApiV1WebhooksResponses = {
     /**
      * Response
      * OK
@@ -1543,16 +1543,16 @@ export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsResponses = {
     200: Array<WebhookSubscriptionSchema>;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsResponse = ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsResponses[keyof ScapiAppEndpointsWebhookApiGetWebhookSubscriptionsResponses];
+export type GetApiV1WebhooksResponse = GetApiV1WebhooksResponses[keyof GetApiV1WebhooksResponses];
 
-export type ScapiAppEndpointsWebhookApiPostWebhookSubscriptionData = {
+export type PostApiV1WebhooksData = {
     body: WebhookSubscriptionPostSchema;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/';
 };
 
-export type ScapiAppEndpointsWebhookApiPostWebhookSubscriptionErrors = {
+export type PostApiV1WebhooksErrors = {
     /**
      * Bad Request
      */
@@ -1563,18 +1563,18 @@ export type ScapiAppEndpointsWebhookApiPostWebhookSubscriptionErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiPostWebhookSubscriptionError = ScapiAppEndpointsWebhookApiPostWebhookSubscriptionErrors[keyof ScapiAppEndpointsWebhookApiPostWebhookSubscriptionErrors];
+export type PostApiV1WebhooksError = PostApiV1WebhooksErrors[keyof PostApiV1WebhooksErrors];
 
-export type ScapiAppEndpointsWebhookApiPostWebhookSubscriptionResponses = {
+export type PostApiV1WebhooksResponses = {
     /**
      * OK
      */
     200: SecretWebhookSubscriptionSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiPostWebhookSubscriptionResponse = ScapiAppEndpointsWebhookApiPostWebhookSubscriptionResponses[keyof ScapiAppEndpointsWebhookApiPostWebhookSubscriptionResponses];
+export type PostApiV1WebhooksResponse = PostApiV1WebhooksResponses[keyof PostApiV1WebhooksResponses];
 
-export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionData = {
+export type DeleteApiV1WebhooksBySubscriptionIdData = {
     body?: never;
     path: {
         /**
@@ -1586,7 +1586,7 @@ export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionData = {
     url: '/api/v1/webhooks/{subscription_id}';
 };
 
-export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionErrors = {
+export type DeleteApiV1WebhooksBySubscriptionIdErrors = {
     /**
      * Bad Request
      */
@@ -1601,18 +1601,18 @@ export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionError = ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionErrors[keyof ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionErrors];
+export type DeleteApiV1WebhooksBySubscriptionIdError = DeleteApiV1WebhooksBySubscriptionIdErrors[keyof DeleteApiV1WebhooksBySubscriptionIdErrors];
 
-export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionResponses = {
+export type DeleteApiV1WebhooksBySubscriptionIdResponses = {
     /**
      * No Content
      */
     204: void;
 };
 
-export type ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionResponse = ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionResponses[keyof ScapiAppEndpointsWebhookApiDeleteWebhookSubscriptionResponses];
+export type DeleteApiV1WebhooksBySubscriptionIdResponse = DeleteApiV1WebhooksBySubscriptionIdResponses[keyof DeleteApiV1WebhooksBySubscriptionIdResponses];
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionData = {
+export type GetApiV1WebhooksBySubscriptionIdData = {
     body?: never;
     path: {
         /**
@@ -1624,7 +1624,7 @@ export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionData = {
     url: '/api/v1/webhooks/{subscription_id}';
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionErrors = {
+export type GetApiV1WebhooksBySubscriptionIdErrors = {
     /**
      * Bad Request
      */
@@ -1639,18 +1639,18 @@ export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionError = ScapiAppEndpointsWebhookApiGetWebhookSubscriptionErrors[keyof ScapiAppEndpointsWebhookApiGetWebhookSubscriptionErrors];
+export type GetApiV1WebhooksBySubscriptionIdError = GetApiV1WebhooksBySubscriptionIdErrors[keyof GetApiV1WebhooksBySubscriptionIdErrors];
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionResponses = {
+export type GetApiV1WebhooksBySubscriptionIdResponses = {
     /**
      * OK
      */
     200: WebhookSubscriptionSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiGetWebhookSubscriptionResponse = ScapiAppEndpointsWebhookApiGetWebhookSubscriptionResponses[keyof ScapiAppEndpointsWebhookApiGetWebhookSubscriptionResponses];
+export type GetApiV1WebhooksBySubscriptionIdResponse = GetApiV1WebhooksBySubscriptionIdResponses[keyof GetApiV1WebhooksBySubscriptionIdResponses];
 
-export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchData = {
+export type PatchApiV1WebhooksBySubscriptionIdData = {
     body: WebhookSubscriptionPatchSchemaPatch;
     path: {
         /**
@@ -1662,7 +1662,7 @@ export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchData = {
     url: '/api/v1/webhooks/{subscription_id}';
 };
 
-export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchErrors = {
+export type PatchApiV1WebhooksBySubscriptionIdErrors = {
     /**
      * Bad Request
      */
@@ -1677,74 +1677,74 @@ export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchError = ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchErrors[keyof ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchErrors];
+export type PatchApiV1WebhooksBySubscriptionIdError = PatchApiV1WebhooksBySubscriptionIdErrors[keyof PatchApiV1WebhooksBySubscriptionIdErrors];
 
-export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchResponses = {
+export type PatchApiV1WebhooksBySubscriptionIdResponses = {
     /**
      * OK
      */
     200: WebhookSubscriptionSchema;
 };
 
-export type ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchResponse = ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchResponses[keyof ScapiAppEndpointsWebhookApiUpdateWebhookSubscriptionPatchResponses];
+export type PatchApiV1WebhooksBySubscriptionIdResponse = PatchApiV1WebhooksBySubscriptionIdResponses[keyof PatchApiV1WebhooksBySubscriptionIdResponses];
 
-export type ScapiAppEndpointsWebhookApiOrderCreatedWebhookData = {
+export type PostApiV1WebhooksOrderCreatedData = {
     body: OrderCreatedWebhookSchema;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/order-created';
 };
 
-export type ScapiAppEndpointsWebhookApiOrderCreatedWebhookResponses = {
+export type PostApiV1WebhooksOrderCreatedResponses = {
     /**
      * OK
      */
     200: unknown;
 };
 
-export type ScapiAppEndpointsWebhookApiOrderCancelledWebhookData = {
+export type PostApiV1WebhooksOrderCancelledData = {
     body: OrderCancelledWebhookSchema;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/order-cancelled';
 };
 
-export type ScapiAppEndpointsWebhookApiOrderCancelledWebhookResponses = {
+export type PostApiV1WebhooksOrderCancelledResponses = {
     /**
      * OK
      */
     200: unknown;
 };
 
-export type ScapiAppEndpointsWebhookApiOrderShippedWebhookData = {
+export type PostApiV1WebhooksOrderShippedData = {
     body: OrderShippedWebhookSchema;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/order-shipped';
 };
 
-export type ScapiAppEndpointsWebhookApiOrderShippedWebhookResponses = {
+export type PostApiV1WebhooksOrderShippedResponses = {
     /**
      * OK
      */
     200: unknown;
 };
 
-export type ScapiAppEndpointsWebhookApiOrderReturnedWebhookData = {
+export type PostApiV1WebhooksOrderReturnedData = {
     body: OrderReturnedWebhookSchema;
     path?: never;
     query?: never;
     url: '/api/v1/webhooks/order-returned';
 };
 
-export type ScapiAppEndpointsWebhookApiOrderReturnedWebhookResponses = {
+export type PostApiV1WebhooksOrderReturnedResponses = {
     /**
      * OK
      */
     200: unknown;
 };
 
-export type ScapiAppEndpointsProductApiGetProductsData = {
+export type GetApiV1ProductsData = {
     body?: never;
     path?: never;
     query?: {
@@ -1777,7 +1777,7 @@ export type ScapiAppEndpointsProductApiGetProductsData = {
     url: '/api/v1/products/';
 };
 
-export type ScapiAppEndpointsProductApiGetProductsErrors = {
+export type GetApiV1ProductsErrors = {
     /**
      * Bad Request
      */
@@ -1788,25 +1788,25 @@ export type ScapiAppEndpointsProductApiGetProductsErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsProductApiGetProductsError = ScapiAppEndpointsProductApiGetProductsErrors[keyof ScapiAppEndpointsProductApiGetProductsErrors];
+export type GetApiV1ProductsError = GetApiV1ProductsErrors[keyof GetApiV1ProductsErrors];
 
-export type ScapiAppEndpointsProductApiGetProductsResponses = {
+export type GetApiV1ProductsResponses = {
     /**
      * OK
      */
     200: GetProductsResponseSchema;
 };
 
-export type ScapiAppEndpointsProductApiGetProductsResponse = ScapiAppEndpointsProductApiGetProductsResponses[keyof ScapiAppEndpointsProductApiGetProductsResponses];
+export type GetApiV1ProductsResponse = GetApiV1ProductsResponses[keyof GetApiV1ProductsResponses];
 
-export type ScapiAppEndpointsProductApiUpsertProductData = {
+export type PostApiV1ProductsData = {
     body: UpsertProductSchema;
     path?: never;
     query?: never;
     url: '/api/v1/products/';
 };
 
-export type ScapiAppEndpointsProductApiUpsertProductErrors = {
+export type PostApiV1ProductsErrors = {
     /**
      * Bad Request
      */
@@ -1817,25 +1817,25 @@ export type ScapiAppEndpointsProductApiUpsertProductErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpsertProductError = ScapiAppEndpointsProductApiUpsertProductErrors[keyof ScapiAppEndpointsProductApiUpsertProductErrors];
+export type PostApiV1ProductsError = PostApiV1ProductsErrors[keyof PostApiV1ProductsErrors];
 
-export type ScapiAppEndpointsProductApiUpsertProductResponses = {
+export type PostApiV1ProductsResponses = {
     /**
      * OK
      */
     200: BatchRequestResponseSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpsertProductResponse = ScapiAppEndpointsProductApiUpsertProductResponses[keyof ScapiAppEndpointsProductApiUpsertProductResponses];
+export type PostApiV1ProductsResponse = PostApiV1ProductsResponses[keyof PostApiV1ProductsResponses];
 
-export type ScapiAppEndpointsProductApiUpdateProductStatusData = {
+export type PutApiV1ProductsStatusData = {
     body: UpdateProductStatusSchema;
     path?: never;
     query?: never;
     url: '/api/v1/products/status';
 };
 
-export type ScapiAppEndpointsProductApiUpdateProductStatusErrors = {
+export type PutApiV1ProductsStatusErrors = {
     /**
      * Bad Request
      */
@@ -1846,50 +1846,50 @@ export type ScapiAppEndpointsProductApiUpdateProductStatusErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpdateProductStatusError = ScapiAppEndpointsProductApiUpdateProductStatusErrors[keyof ScapiAppEndpointsProductApiUpdateProductStatusErrors];
+export type PutApiV1ProductsStatusError = PutApiV1ProductsStatusErrors[keyof PutApiV1ProductsStatusErrors];
 
-export type ScapiAppEndpointsProductApiUpdateProductStatusResponses = {
+export type PutApiV1ProductsStatusResponses = {
     /**
      * OK
      */
     200: UpdateProductStatusResponseSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpdateProductStatusResponse = ScapiAppEndpointsProductApiUpdateProductStatusResponses[keyof ScapiAppEndpointsProductApiUpdateProductStatusResponses];
+export type PutApiV1ProductsStatusResponse = PutApiV1ProductsStatusResponses[keyof PutApiV1ProductsStatusResponses];
 
-export type ScapiAppEndpointsProductApiUpdateStockData = {
+export type PutApiV1ProductsStocksData = {
     body: UpdateStockSchema;
     path?: never;
     query?: never;
     url: '/api/v1/products/stocks';
 };
 
-export type ScapiAppEndpointsProductApiUpdateStockErrors = {
+export type PutApiV1ProductsStocksErrors = {
     /**
      * Unauthorized
      */
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpdateStockError = ScapiAppEndpointsProductApiUpdateStockErrors[keyof ScapiAppEndpointsProductApiUpdateStockErrors];
+export type PutApiV1ProductsStocksError = PutApiV1ProductsStocksErrors[keyof PutApiV1ProductsStocksErrors];
 
-export type ScapiAppEndpointsProductApiUpdateStockResponses = {
+export type PutApiV1ProductsStocksResponses = {
     /**
      * OK
      */
     200: UpdateStockResponseSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpdateStockResponse = ScapiAppEndpointsProductApiUpdateStockResponses[keyof ScapiAppEndpointsProductApiUpdateStockResponses];
+export type PutApiV1ProductsStocksResponse = PutApiV1ProductsStocksResponses[keyof PutApiV1ProductsStocksResponses];
 
-export type ScapiAppEndpointsProductApiUpdatePriceData = {
+export type PutApiV1ProductsPricesData = {
     body: UpdatePriceSchema;
     path?: never;
     query?: never;
     url: '/api/v1/products/prices';
 };
 
-export type ScapiAppEndpointsProductApiUpdatePriceErrors = {
+export type PutApiV1ProductsPricesErrors = {
     /**
      * Bad Request
      */
@@ -1900,18 +1900,18 @@ export type ScapiAppEndpointsProductApiUpdatePriceErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpdatePriceError = ScapiAppEndpointsProductApiUpdatePriceErrors[keyof ScapiAppEndpointsProductApiUpdatePriceErrors];
+export type PutApiV1ProductsPricesError = PutApiV1ProductsPricesErrors[keyof PutApiV1ProductsPricesErrors];
 
-export type ScapiAppEndpointsProductApiUpdatePriceResponses = {
+export type PutApiV1ProductsPricesResponses = {
     /**
      * OK
      */
     200: UpdatePriceResponseSchema;
 };
 
-export type ScapiAppEndpointsProductApiUpdatePriceResponse = ScapiAppEndpointsProductApiUpdatePriceResponses[keyof ScapiAppEndpointsProductApiUpdatePriceResponses];
+export type PutApiV1ProductsPricesResponse = PutApiV1ProductsPricesResponses[keyof PutApiV1ProductsPricesResponses];
 
-export type ScapiAppEndpointsCategoryApiListCategoriesData = {
+export type GetApiV1CategoriesData = {
     body?: never;
     path?: never;
     query?: {
@@ -1939,7 +1939,7 @@ export type ScapiAppEndpointsCategoryApiListCategoriesData = {
     url: '/api/v1/categories/';
 };
 
-export type ScapiAppEndpointsCategoryApiListCategoriesErrors = {
+export type GetApiV1CategoriesErrors = {
     /**
      * Bad Request
      */
@@ -1950,18 +1950,18 @@ export type ScapiAppEndpointsCategoryApiListCategoriesErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsCategoryApiListCategoriesError = ScapiAppEndpointsCategoryApiListCategoriesErrors[keyof ScapiAppEndpointsCategoryApiListCategoriesErrors];
+export type GetApiV1CategoriesError = GetApiV1CategoriesErrors[keyof GetApiV1CategoriesErrors];
 
-export type ScapiAppEndpointsCategoryApiListCategoriesResponses = {
+export type GetApiV1CategoriesResponses = {
     /**
      * OK
      */
     200: GetCategoriesResponseSchema;
 };
 
-export type ScapiAppEndpointsCategoryApiListCategoriesResponse = ScapiAppEndpointsCategoryApiListCategoriesResponses[keyof ScapiAppEndpointsCategoryApiListCategoriesResponses];
+export type GetApiV1CategoriesResponse = GetApiV1CategoriesResponses[keyof GetApiV1CategoriesResponses];
 
-export type ScapiAppEndpointsCategoryApiListAttributeGroupsData = {
+export type GetApiV1CategoriesByCategoryIdAttributeGroupsData = {
     body?: never;
     path: {
         /**
@@ -1973,7 +1973,7 @@ export type ScapiAppEndpointsCategoryApiListAttributeGroupsData = {
     url: '/api/v1/categories/{category_id}/attribute-groups';
 };
 
-export type ScapiAppEndpointsCategoryApiListAttributeGroupsResponses = {
+export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponses = {
     /**
      * Response
      * OK
@@ -1981,9 +1981,9 @@ export type ScapiAppEndpointsCategoryApiListAttributeGroupsResponses = {
     200: Array<AttributeGroupSchema>;
 };
 
-export type ScapiAppEndpointsCategoryApiListAttributeGroupsResponse = ScapiAppEndpointsCategoryApiListAttributeGroupsResponses[keyof ScapiAppEndpointsCategoryApiListAttributeGroupsResponses];
+export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponse = GetApiV1CategoriesByCategoryIdAttributeGroupsResponses[keyof GetApiV1CategoriesByCategoryIdAttributeGroupsResponses];
 
-export type ScapiAppEndpointsResultApiGetProductBatchResultsData = {
+export type GetApiV1ResultsProductsData = {
     body?: never;
     path?: never;
     query: {
@@ -1995,7 +1995,7 @@ export type ScapiAppEndpointsResultApiGetProductBatchResultsData = {
     url: '/api/v1/results/products';
 };
 
-export type ScapiAppEndpointsResultApiGetProductBatchResultsErrors = {
+export type GetApiV1ResultsProductsErrors = {
     /**
      * Bad Request
      */
@@ -2010,18 +2010,18 @@ export type ScapiAppEndpointsResultApiGetProductBatchResultsErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetProductBatchResultsError = ScapiAppEndpointsResultApiGetProductBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetProductBatchResultsErrors];
+export type GetApiV1ResultsProductsError = GetApiV1ResultsProductsErrors[keyof GetApiV1ResultsProductsErrors];
 
-export type ScapiAppEndpointsResultApiGetProductBatchResultsResponses = {
+export type GetApiV1ResultsProductsResponses = {
     /**
      * OK
      */
     200: UpsertProductBatchResultsResponseSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetProductBatchResultsResponse = ScapiAppEndpointsResultApiGetProductBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetProductBatchResultsResponses];
+export type GetApiV1ResultsProductsResponse = GetApiV1ResultsProductsResponses[keyof GetApiV1ResultsProductsResponses];
 
-export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsData = {
+export type GetApiV1ResultsStatusData = {
     body?: never;
     path?: never;
     query: {
@@ -2033,7 +2033,7 @@ export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsData = {
     url: '/api/v1/results/status';
 };
 
-export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsErrors = {
+export type GetApiV1ResultsStatusErrors = {
     /**
      * Bad Request
      */
@@ -2048,18 +2048,18 @@ export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsErrors =
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsError = ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsErrors];
+export type GetApiV1ResultsStatusError = GetApiV1ResultsStatusErrors[keyof GetApiV1ResultsStatusErrors];
 
-export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsResponses = {
+export type GetApiV1ResultsStatusResponses = {
     /**
      * OK
      */
     200: UpdateProductStatusBatchResultsResponseSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsResponse = ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetProductStatusUpdateBatchResultsResponses];
+export type GetApiV1ResultsStatusResponse = GetApiV1ResultsStatusResponses[keyof GetApiV1ResultsStatusResponses];
 
-export type ScapiAppEndpointsResultApiGetStockBatchResultsData = {
+export type GetApiV1ResultsStocksData = {
     body?: never;
     path?: never;
     query: {
@@ -2071,7 +2071,7 @@ export type ScapiAppEndpointsResultApiGetStockBatchResultsData = {
     url: '/api/v1/results/stocks';
 };
 
-export type ScapiAppEndpointsResultApiGetStockBatchResultsErrors = {
+export type GetApiV1ResultsStocksErrors = {
     /**
      * Bad Request
      */
@@ -2086,18 +2086,18 @@ export type ScapiAppEndpointsResultApiGetStockBatchResultsErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetStockBatchResultsError = ScapiAppEndpointsResultApiGetStockBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetStockBatchResultsErrors];
+export type GetApiV1ResultsStocksError = GetApiV1ResultsStocksErrors[keyof GetApiV1ResultsStocksErrors];
 
-export type ScapiAppEndpointsResultApiGetStockBatchResultsResponses = {
+export type GetApiV1ResultsStocksResponses = {
     /**
      * OK
      */
     200: StockBatchResultsResponseSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetStockBatchResultsResponse = ScapiAppEndpointsResultApiGetStockBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetStockBatchResultsResponses];
+export type GetApiV1ResultsStocksResponse = GetApiV1ResultsStocksResponses[keyof GetApiV1ResultsStocksResponses];
 
-export type ScapiAppEndpointsResultApiGetPriceBatchResultsData = {
+export type GetApiV1ResultsPricesData = {
     body?: never;
     path?: never;
     query: {
@@ -2109,7 +2109,7 @@ export type ScapiAppEndpointsResultApiGetPriceBatchResultsData = {
     url: '/api/v1/results/prices';
 };
 
-export type ScapiAppEndpointsResultApiGetPriceBatchResultsErrors = {
+export type GetApiV1ResultsPricesErrors = {
     /**
      * Bad Request
      */
@@ -2124,18 +2124,18 @@ export type ScapiAppEndpointsResultApiGetPriceBatchResultsErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetPriceBatchResultsError = ScapiAppEndpointsResultApiGetPriceBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetPriceBatchResultsErrors];
+export type GetApiV1ResultsPricesError = GetApiV1ResultsPricesErrors[keyof GetApiV1ResultsPricesErrors];
 
-export type ScapiAppEndpointsResultApiGetPriceBatchResultsResponses = {
+export type GetApiV1ResultsPricesResponses = {
     /**
      * OK
      */
     200: PriceBatchResultsResponseSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetPriceBatchResultsResponse = ScapiAppEndpointsResultApiGetPriceBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetPriceBatchResultsResponses];
+export type GetApiV1ResultsPricesResponse = GetApiV1ResultsPricesResponses[keyof GetApiV1ResultsPricesResponses];
 
-export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsData = {
+export type GetApiV1ResultsCancelOrdersData = {
     body?: never;
     path?: never;
     query: {
@@ -2147,7 +2147,7 @@ export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsData = {
     url: '/api/v1/results/cancel-orders';
 };
 
-export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsErrors = {
+export type GetApiV1ResultsCancelOrdersErrors = {
     /**
      * Bad Request
      */
@@ -2162,18 +2162,18 @@ export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsError = ScapiAppEndpointsResultApiGetCancelOrderBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetCancelOrderBatchResultsErrors];
+export type GetApiV1ResultsCancelOrdersError = GetApiV1ResultsCancelOrdersErrors[keyof GetApiV1ResultsCancelOrdersErrors];
 
-export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsResponses = {
+export type GetApiV1ResultsCancelOrdersResponses = {
     /**
      * OK
      */
     200: CancelOrderResultsResponseSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetCancelOrderBatchResultsResponse = ScapiAppEndpointsResultApiGetCancelOrderBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetCancelOrderBatchResultsResponses];
+export type GetApiV1ResultsCancelOrdersResponse = GetApiV1ResultsCancelOrdersResponses[keyof GetApiV1ResultsCancelOrdersResponses];
 
-export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsData = {
+export type GetApiV1ResultsReturnOrdersData = {
     body?: never;
     path?: never;
     query: {
@@ -2185,7 +2185,7 @@ export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsData = {
     url: '/api/v1/results/return-orders';
 };
 
-export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsErrors = {
+export type GetApiV1ResultsReturnOrdersErrors = {
     /**
      * Bad Request
      */
@@ -2200,18 +2200,18 @@ export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsError = ScapiAppEndpointsResultApiGetReturnOrderBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetReturnOrderBatchResultsErrors];
+export type GetApiV1ResultsReturnOrdersError = GetApiV1ResultsReturnOrdersErrors[keyof GetApiV1ResultsReturnOrdersErrors];
 
-export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsResponses = {
+export type GetApiV1ResultsReturnOrdersResponses = {
     /**
      * OK
      */
     200: ReturnResultsSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetReturnOrderBatchResultsResponse = ScapiAppEndpointsResultApiGetReturnOrderBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetReturnOrderBatchResultsResponses];
+export type GetApiV1ResultsReturnOrdersResponse = GetApiV1ResultsReturnOrdersResponses[keyof GetApiV1ResultsReturnOrdersResponses];
 
-export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsData = {
+export type GetApiV1ResultsShipOrdersData = {
     body?: never;
     path?: never;
     query: {
@@ -2223,7 +2223,7 @@ export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsData = {
     url: '/api/v1/results/ship-orders';
 };
 
-export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsErrors = {
+export type GetApiV1ResultsShipOrdersErrors = {
     /**
      * Bad Request
      */
@@ -2238,18 +2238,18 @@ export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsErrors = {
     404: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsError = ScapiAppEndpointsResultApiGetShipOrderBatchResultsErrors[keyof ScapiAppEndpointsResultApiGetShipOrderBatchResultsErrors];
+export type GetApiV1ResultsShipOrdersError = GetApiV1ResultsShipOrdersErrors[keyof GetApiV1ResultsShipOrdersErrors];
 
-export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsResponses = {
+export type GetApiV1ResultsShipOrdersResponses = {
     /**
      * OK
      */
     200: ShipmentOrderResultsResponseSchema;
 };
 
-export type ScapiAppEndpointsResultApiGetShipOrderBatchResultsResponse = ScapiAppEndpointsResultApiGetShipOrderBatchResultsResponses[keyof ScapiAppEndpointsResultApiGetShipOrderBatchResultsResponses];
+export type GetApiV1ResultsShipOrdersResponse = GetApiV1ResultsShipOrdersResponses[keyof GetApiV1ResultsShipOrdersResponses];
 
-export type ScapiAppEndpointsOrderApiGetOrdersData = {
+export type GetApiV1OrdersData = {
     body?: never;
     path?: never;
     query?: {
@@ -2306,7 +2306,7 @@ export type ScapiAppEndpointsOrderApiGetOrdersData = {
     url: '/api/v1/orders/';
 };
 
-export type ScapiAppEndpointsOrderApiGetOrdersErrors = {
+export type GetApiV1OrdersErrors = {
     /**
      * Bad Request
      */
@@ -2317,18 +2317,18 @@ export type ScapiAppEndpointsOrderApiGetOrdersErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsOrderApiGetOrdersError = ScapiAppEndpointsOrderApiGetOrdersErrors[keyof ScapiAppEndpointsOrderApiGetOrdersErrors];
+export type GetApiV1OrdersError = GetApiV1OrdersErrors[keyof GetApiV1OrdersErrors];
 
-export type ScapiAppEndpointsOrderApiGetOrdersResponses = {
+export type GetApiV1OrdersResponses = {
     /**
      * OK
      */
     200: PagedGetOrderSchema;
 };
 
-export type ScapiAppEndpointsOrderApiGetOrdersResponse = ScapiAppEndpointsOrderApiGetOrdersResponses[keyof ScapiAppEndpointsOrderApiGetOrdersResponses];
+export type GetApiV1OrdersResponse = GetApiV1OrdersResponses[keyof GetApiV1OrdersResponses];
 
-export type ScapiAppEndpointsOrderApiGetDeliveryDocumentData = {
+export type GetApiV1OrdersByOrderNumberDeliveryDocumentData = {
     body?: never;
     path: {
         /**
@@ -2340,7 +2340,7 @@ export type ScapiAppEndpointsOrderApiGetDeliveryDocumentData = {
     url: '/api/v1/orders/{order_number}/delivery_document';
 };
 
-export type ScapiAppEndpointsOrderApiGetDeliveryDocumentErrors = {
+export type GetApiV1OrdersByOrderNumberDeliveryDocumentErrors = {
     /**
      * Bad Request
      */
@@ -2355,16 +2355,16 @@ export type ScapiAppEndpointsOrderApiGetDeliveryDocumentErrors = {
     500: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsOrderApiGetDeliveryDocumentError = ScapiAppEndpointsOrderApiGetDeliveryDocumentErrors[keyof ScapiAppEndpointsOrderApiGetDeliveryDocumentErrors];
+export type GetApiV1OrdersByOrderNumberDeliveryDocumentError = GetApiV1OrdersByOrderNumberDeliveryDocumentErrors[keyof GetApiV1OrdersByOrderNumberDeliveryDocumentErrors];
 
-export type ScapiAppEndpointsOrderApiCancelOrderItemsData = {
+export type PostApiV1OrdersCancelData = {
     body: CancelRequestSchema;
     path?: never;
     query?: never;
     url: '/api/v1/orders/cancel';
 };
 
-export type ScapiAppEndpointsOrderApiCancelOrderItemsErrors = {
+export type PostApiV1OrdersCancelErrors = {
     /**
      * Bad Request
      */
@@ -2375,25 +2375,25 @@ export type ScapiAppEndpointsOrderApiCancelOrderItemsErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsOrderApiCancelOrderItemsError = ScapiAppEndpointsOrderApiCancelOrderItemsErrors[keyof ScapiAppEndpointsOrderApiCancelOrderItemsErrors];
+export type PostApiV1OrdersCancelError = PostApiV1OrdersCancelErrors[keyof PostApiV1OrdersCancelErrors];
 
-export type ScapiAppEndpointsOrderApiCancelOrderItemsResponses = {
+export type PostApiV1OrdersCancelResponses = {
     /**
      * OK
      */
     200: BatchRequestResponseSchema;
 };
 
-export type ScapiAppEndpointsOrderApiCancelOrderItemsResponse = ScapiAppEndpointsOrderApiCancelOrderItemsResponses[keyof ScapiAppEndpointsOrderApiCancelOrderItemsResponses];
+export type PostApiV1OrdersCancelResponse = PostApiV1OrdersCancelResponses[keyof PostApiV1OrdersCancelResponses];
 
-export type ScapiAppEndpointsOrderApiShipOrderItemsData = {
+export type PostApiV1OrdersShipData = {
     body: ShipmentRequestSchema;
     path?: never;
     query?: never;
     url: '/api/v1/orders/ship';
 };
 
-export type ScapiAppEndpointsOrderApiShipOrderItemsErrors = {
+export type PostApiV1OrdersShipErrors = {
     /**
      * Bad Request
      */
@@ -2404,25 +2404,25 @@ export type ScapiAppEndpointsOrderApiShipOrderItemsErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsOrderApiShipOrderItemsError = ScapiAppEndpointsOrderApiShipOrderItemsErrors[keyof ScapiAppEndpointsOrderApiShipOrderItemsErrors];
+export type PostApiV1OrdersShipError = PostApiV1OrdersShipErrors[keyof PostApiV1OrdersShipErrors];
 
-export type ScapiAppEndpointsOrderApiShipOrderItemsResponses = {
+export type PostApiV1OrdersShipResponses = {
     /**
      * OK
      */
     200: BatchRequestResponseSchema;
 };
 
-export type ScapiAppEndpointsOrderApiShipOrderItemsResponse = ScapiAppEndpointsOrderApiShipOrderItemsResponses[keyof ScapiAppEndpointsOrderApiShipOrderItemsResponses];
+export type PostApiV1OrdersShipResponse = PostApiV1OrdersShipResponses[keyof PostApiV1OrdersShipResponses];
 
-export type ScapiAppEndpointsOrderApiReturnOrderItemsData = {
+export type PostApiV1OrdersReturnData = {
     body: ReturnRequestSchema;
     path?: never;
     query?: never;
     url: '/api/v1/orders/return';
 };
 
-export type ScapiAppEndpointsOrderApiReturnOrderItemsErrors = {
+export type PostApiV1OrdersReturnErrors = {
     /**
      * Bad Request
      */
@@ -2433,16 +2433,16 @@ export type ScapiAppEndpointsOrderApiReturnOrderItemsErrors = {
     401: BadRequestSchema;
 };
 
-export type ScapiAppEndpointsOrderApiReturnOrderItemsError = ScapiAppEndpointsOrderApiReturnOrderItemsErrors[keyof ScapiAppEndpointsOrderApiReturnOrderItemsErrors];
+export type PostApiV1OrdersReturnError = PostApiV1OrdersReturnErrors[keyof PostApiV1OrdersReturnErrors];
 
-export type ScapiAppEndpointsOrderApiReturnOrderItemsResponses = {
+export type PostApiV1OrdersReturnResponses = {
     /**
      * OK
      */
     200: BatchRequestResponseSchema;
 };
 
-export type ScapiAppEndpointsOrderApiReturnOrderItemsResponse = ScapiAppEndpointsOrderApiReturnOrderItemsResponses[keyof ScapiAppEndpointsOrderApiReturnOrderItemsResponses];
+export type PostApiV1OrdersReturnResponse = PostApiV1OrdersReturnResponses[keyof PostApiV1OrdersReturnResponses];
 
 export type ClientOptions = {
     baseURL: string;
