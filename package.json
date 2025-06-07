@@ -18,13 +18,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "openapi-ts": "openapi-ts",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "clean-operation-ids": "sed -i '/\"operationId\": \"scapi_app_endpoints_.*_api_.*\",/d' openapi.json"
   },
   "devDependencies": {
-    "@hey-api/client-axios": "^0.8.0",
     "@hey-api/openapi-ts": "^0.70.0",
     "prettier": "3.5.3",
     "typescript": "^5.3.3"
   },
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@hey-api/client-axios": "^0.8.0"
+  }
 }
