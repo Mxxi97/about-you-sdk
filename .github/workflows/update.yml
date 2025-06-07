@@ -29,6 +29,9 @@ jobs:
       - name: Clean operationId fields
         run: 'sed -i ''/"operationId": "scapi_app_endpoints_.*_api_.*",/d'' openapi.json'
 
+      - name: Log OpenAPI spec
+        run: cat openapi.json
+
       - run: npm run openapi-ts
 
       - name: Check for changes
@@ -38,6 +41,14 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Log changes
+        run: |
+          if [ "${{ steps.git-check.outputs.changed }}" = "true" ]; then
+            echo "Changes detected in OpenAPI client."
+          else
+            echo "No changes detected in OpenAPI client."
           fi
 
       - name: Commit and tag release
