@@ -78,6 +78,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
 
+      - name: Show npm debug log on failure
+        if: failure()
+        run: |
+          echo "---- NPM DEBUG LOG START ----"
+          cat /home/runner/.npm/_logs/*-debug-0.log || echo "No debug log found"
+          echo "---- NPM DEBUG LOG END ----"
+
       - name: Create GitHub Release
         if: steps.git-check.outputs.changed == 'true' && github.ref == 'refs/heads/main'
         uses: actions/create-release@v1
