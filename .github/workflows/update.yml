@@ -29,14 +29,14 @@ jobs:
       - name: Prettify openapi.json
         run: jq . openapi.json > openapi_pretty.json && mv openapi_pretty.json openapi.json
 
-      - name: Log OpenAPI spec
-        run: cat openapi.json
+      # - name: Log OpenAPI spec
+      #   run: cat openapi.json
 
       - name: Clean operationId fields
         run: 'sed -i ''/"operationId": "scapi_app_endpoints_.*_api_.*",/d'' openapi.json'
 
-      - name: Log OpenAPI spec
-        run: cat openapi.json
+      # - name: Log OpenAPI spec
+      #   run: cat openapi.json
 
       - run: npm run openapi-ts
 
