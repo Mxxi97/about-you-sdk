@@ -26,6 +26,9 @@ jobs:
       - name: Fetch latest OpenAPI spec
         run: curl -L https://partner.aboutyou.com/api/v1/openapi.json -o openapi.json
 
+      - name: Prettify openapi.json
+        run: jq . openapi.json > openapi_pretty.json && mv openapi_pretty.json openapi.json
+
       - name: Log OpenAPI spec
         run: cat openapi.json
 
