@@ -543,27 +543,27 @@
             "name": "page",
             "schema": {
               "default": 1,
-              "description": "Page number to retrieve items from",
+              "description": "Page number to retrieve items from.",
               "minimum": 1,
               "title": "Page",
               "type": "integer"
             },
             "required": false,
-            "description": "Page number to retrieve items from"
+            "description": "Page number to retrieve items from."
           },
           {
             "in": "query",
             "name": "per_page",
             "schema": {
               "default": 20,
-              "description": "Number of items per page",
+              "description": "Number of items per page.",
               "maximum": 100,
               "minimum": 1,
               "title": "Per Page",
               "type": "integer"
             },
             "required": false,
-            "description": "Number of items per page"
+            "description": "Number of items per page."
           }
         ],
         "responses": {
@@ -872,27 +872,27 @@
             "name": "page",
             "schema": {
               "default": 1,
-              "description": "Page number to retrieve items from",
+              "description": "Page number to retrieve items from.",
               "minimum": 1,
               "title": "Page",
               "type": "integer"
             },
             "required": false,
-            "description": "Page number to retrieve items from"
+            "description": "Page number to retrieve items from."
           },
           {
             "in": "query",
             "name": "per_page",
             "schema": {
               "default": 20,
-              "description": "Number of items per page",
+              "description": "Number of items per page.",
               "maximum": 100,
               "minimum": 1,
               "title": "Per Page",
               "type": "integer"
             },
             "required": false,
-            "description": "Number of items per page"
+            "description": "Number of items per page."
           }
         ],
         "responses": {
@@ -1462,12 +1462,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Order number to search for",
+              "description": "Order number to search for.",
               "q": "scayle_key__icontains",
               "title": "Order number"
             },
             "required": false,
-            "description": "Order number to search for"
+            "description": "Order number to search for."
           },
           {
             "in": "query",
@@ -1481,12 +1481,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Customer key to search for",
+              "description": "Customer key to search for.",
               "q": "customer_key__icontains",
               "title": "Customer key"
             },
             "required": false,
-            "description": "Customer key to search for"
+            "description": "Customer key to search for."
           },
           {
             "in": "query",
@@ -1519,12 +1519,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Shop country to search for",
+              "description": "Shop country to search for.",
               "q": "shop__country__code__icontains",
               "title": "Shop country"
             },
             "required": false,
-            "description": "Shop country to search for"
+            "description": "Shop country to search for."
           },
           {
             "in": "query",
@@ -1576,12 +1576,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Orders from date to filter by",
+              "description": "Orders from date to filter by.",
               "q": "created_at__gte",
               "title": "Orders from"
             },
             "required": false,
-            "description": "Orders from date to filter by"
+            "description": "Orders from date to filter by."
           },
           {
             "in": "query",
@@ -1596,39 +1596,57 @@
                   "type": "null"
                 }
               ],
-              "description": "Orders to date to filter by",
+              "description": "Orders to date to filter by.",
               "q": "created_at__lte",
               "title": "Orders to"
             },
             "required": false,
-            "description": "Orders to date to filter by"
+            "description": "Orders to date to filter by."
+          },
+          {
+            "in": "query",
+            "name": "fulfillment_type",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FulfillmentTypes"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Fulfillment type to filter by.",
+              "title": "Fulfillment type"
+            },
+            "required": false,
+            "description": "Fulfillment type to filter by."
           },
           {
             "in": "query",
             "name": "page",
             "schema": {
               "default": 1,
-              "description": "Page number to retrieve items from",
+              "description": "Page number to retrieve items from.",
               "minimum": 1,
               "title": "Page",
               "type": "integer"
             },
             "required": false,
-            "description": "Page number to retrieve items from"
+            "description": "Page number to retrieve items from."
           },
           {
             "in": "query",
             "name": "per_page",
             "schema": {
               "default": 20,
-              "description": "Number of items per page",
+              "description": "Number of items per page.",
               "maximum": 100,
               "minimum": 1,
               "title": "Per Page",
               "type": "integer"
             },
             "required": false,
-            "description": "Number of items per page"
+            "description": "Number of items per page."
           }
         ],
         "responses": {
@@ -1941,7 +1959,11 @@
           "order.created",
           "order.cancelled",
           "order.shipped",
-          "order.returned"
+          "order.returned",
+          "order_items.shipped",
+          "order_items.cancelled",
+          "order_items.returned",
+          "stock.updated"
         ],
         "title": "EventType",
         "type": "string"
@@ -2888,14 +2910,14 @@
         "properties": {
           "page": {
             "default": 1,
-            "description": "Page number to retrieve items from",
+            "description": "Page number to retrieve items from.",
             "minimum": 1,
             "title": "Page",
             "type": "integer"
           },
           "per_page": {
             "default": 20,
-            "description": "Number of items per page",
+            "description": "Number of items per page.",
             "maximum": 100,
             "minimum": 1,
             "title": "Per Page",
@@ -3037,7 +3059,26 @@
                 "type": "null"
               }
             ],
+            "description": "Stock quantity of the product variant in the merchant's warehouse.",
+            "examples": [
+              100
+            ],
             "title": "Quantity"
+          },
+          "quantity_fbm": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Stock quantity of the product variant in ABOUT YOU warehouses.",
+            "examples": [
+              100
+            ],
+            "title": "Quantity Fbm"
           },
           "weight": {
             "anyOf": [
@@ -3132,6 +3173,7 @@
           "brand",
           "category",
           "quantity",
+          "quantity_fbm",
           "weight",
           "countries",
           "country_of_origin",
@@ -4713,6 +4755,14 @@
         "title": "ShipmentResultItemSchema",
         "type": "object"
       },
+      "FulfillmentTypes": {
+        "enum": [
+          "dropshipping",
+          "fulfillment_by_marketplace"
+        ],
+        "title": "FulfillmentTypes",
+        "type": "string"
+      },
       "GetOrderParams": {
         "properties": {
           "order_number": {
@@ -4724,7 +4774,7 @@
                 "type": "null"
               }
             ],
-            "description": "Order number to search for",
+            "description": "Order number to search for.",
             "q": "scayle_key__icontains",
             "title": "Order number"
           },
@@ -4737,7 +4787,7 @@
                 "type": "null"
               }
             ],
-            "description": "Customer key to search for",
+            "description": "Customer key to search for.",
             "q": "customer_key__icontains",
             "title": "Customer key"
           },
@@ -4763,7 +4813,7 @@
                 "type": "null"
               }
             ],
-            "description": "Shop country to search for",
+            "description": "Shop country to search for.",
             "q": "shop__country__code__icontains",
             "title": "Shop country"
           },
@@ -4802,7 +4852,7 @@
                 "type": "null"
               }
             ],
-            "description": "Orders from date to filter by",
+            "description": "Orders from date to filter by.",
             "q": "created_at__gte",
             "title": "Orders from"
           },
@@ -4816,9 +4866,21 @@
                 "type": "null"
               }
             ],
-            "description": "Orders to date to filter by",
+            "description": "Orders to date to filter by.",
             "q": "created_at__lte",
             "title": "Orders to"
+          },
+          "fulfillment_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FulfillmentTypes"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Fulfillment type to filter by.",
+            "title": "Fulfillment type"
           }
         },
         "title": "GetOrderParams",

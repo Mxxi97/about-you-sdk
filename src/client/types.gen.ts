@@ -28,7 +28,7 @@ export type BadRequestSchema = {
 /**
  * EventType
  */
-export type EventType = 'order.created' | 'order.cancelled' | 'order.shipped' | 'order.returned';
+export type EventType = 'order.created' | 'order.cancelled' | 'order.shipped' | 'order.returned' | 'order_items.shipped' | 'order_items.cancelled' | 'order_items.returned' | 'stock.updated';
 
 /**
  * WebhookSubscriptionSchema
@@ -526,12 +526,12 @@ export type GetProductsParams = {
 export type Input = {
     /**
      * Page
-     * Page number to retrieve items from
+     * Page number to retrieve items from.
      */
     page?: number;
     /**
      * Per Page
-     * Number of items per page
+     * Number of items per page.
      */
     per_page?: number;
 };
@@ -595,8 +595,14 @@ export type GetProductItemSchema = {
     category: number;
     /**
      * Quantity
+     * Stock quantity of the product variant in the merchant's warehouse.
      */
     quantity: number | null;
+    /**
+     * Quantity Fbm
+     * Stock quantity of the product variant in ABOUT YOU warehouses.
+     */
+    quantity_fbm: number | null;
     /**
      * Weight
      */
@@ -1387,17 +1393,22 @@ export type ShipmentResultItemSchema = {
 };
 
 /**
+ * FulfillmentTypes
+ */
+export type FulfillmentTypes = 'dropshipping' | 'fulfillment_by_marketplace';
+
+/**
  * GetOrderParams
  */
 export type GetOrderParams = {
     /**
      * Order number
-     * Order number to search for
+     * Order number to search for.
      */
     order_number?: string | null;
     /**
      * Customer key
-     * Customer key to search for
+     * Customer key to search for.
      */
     customer_key?: string | null;
     /**
@@ -1407,7 +1418,7 @@ export type GetOrderParams = {
     carrier_key?: Carrier | null;
     /**
      * Shop country
-     * Shop country to search for
+     * Shop country to search for.
      */
     shop_country?: string | null;
     /**
@@ -1421,14 +1432,19 @@ export type GetOrderParams = {
     order_item_status?: OrdersAppModelsOrderItemOrderItemStatusChoices | null;
     /**
      * Orders from
-     * Orders from date to filter by
+     * Orders from date to filter by.
      */
     orders_from?: string | null;
     /**
      * Orders to
-     * Orders to date to filter by
+     * Orders to date to filter by.
      */
     orders_to?: string | null;
+    /**
+     * Fulfillment type
+     * Fulfillment type to filter by.
+     */
+    fulfillment_type?: FulfillmentTypes | null;
 };
 
 /**
@@ -1765,12 +1781,12 @@ export type GetApiV1ProductsData = {
         status?: Status | null;
         /**
          * Page
-         * Page number to retrieve items from
+         * Page number to retrieve items from.
          */
         page?: number;
         /**
          * Per Page
-         * Number of items per page
+         * Number of items per page.
          */
         per_page?: number;
     };
@@ -1927,12 +1943,12 @@ export type GetApiV1CategoriesData = {
         parent_category?: number | null;
         /**
          * Page
-         * Page number to retrieve items from
+         * Page number to retrieve items from.
          */
         page?: number;
         /**
          * Per Page
-         * Number of items per page
+         * Number of items per page.
          */
         per_page?: number;
     };
@@ -2255,12 +2271,12 @@ export type GetApiV1OrdersData = {
     query?: {
         /**
          * Order number
-         * Order number to search for
+         * Order number to search for.
          */
         order_number?: string | null;
         /**
          * Customer key
-         * Customer key to search for
+         * Customer key to search for.
          */
         customer_key?: string | null;
         /**
@@ -2270,7 +2286,7 @@ export type GetApiV1OrdersData = {
         carrier_key?: Carrier | null;
         /**
          * Shop country
-         * Shop country to search for
+         * Shop country to search for.
          */
         shop_country?: string | null;
         /**
@@ -2284,22 +2300,27 @@ export type GetApiV1OrdersData = {
         order_item_status?: OrdersAppModelsOrderItemOrderItemStatusChoices | null;
         /**
          * Orders from
-         * Orders from date to filter by
+         * Orders from date to filter by.
          */
         orders_from?: string | null;
         /**
          * Orders to
-         * Orders to date to filter by
+         * Orders to date to filter by.
          */
         orders_to?: string | null;
         /**
+         * Fulfillment type
+         * Fulfillment type to filter by.
+         */
+        fulfillment_type?: FulfillmentTypes | null;
+        /**
          * Page
-         * Page number to retrieve items from
+         * Page number to retrieve items from.
          */
         page?: number;
         /**
          * Per Page
-         * Number of items per page
+         * Number of items per page.
          */
         per_page?: number;
     };
