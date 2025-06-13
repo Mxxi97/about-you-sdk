@@ -571,8 +571,11 @@ export type GetProductItemSchema = {
     name: string | null;
     /**
      * Description
+     * Use descriptions instead
+     * @deprecated
      */
     description: string | null;
+    descriptions: LocalizedDescriptionSchema | null;
     /**
      * Color
      */
@@ -646,6 +649,14 @@ export type GetProductsResponseSchema = {
      */
     items: Array<GetProductItemSchema>;
     pagination: Pagination;
+};
+
+/**
+ * LocalizedDescriptionSchema
+ * Schema for handling localized descriptions with locale keys.
+ */
+export type LocalizedDescriptionSchema = {
+    [key: string]: string;
 };
 
 /**
@@ -792,9 +803,11 @@ export type UpsertProductItemSchema = {
     name?: string | null;
     /**
      * Description
-     * Provide a detailed description of the product in German. Maximum 2500 characters.
+     * Use descriptions instead
+     * @deprecated
      */
-    description: string;
+    description?: string | null;
+    descriptions?: LocalizedDescriptionSchema | null;
     /**
      * Color
      * ID (integer) of this property
@@ -1330,7 +1343,7 @@ export type ReturnResultsSchema = {
 /**
  * Carrier
  */
-export type Carrier = 'DHL_STD_NATIONAL' | 'HERMES_KLV' | 'HERMES_STD_NATIONAL' | 'DHL_AUT' | 'DHL_POST_AUT' | 'HERMES_POST_AUT' | 'POST_CH' | 'QUICK_CH' | 'POST_NL' | 'DHL_NL' | 'DHL_PL' | 'PPL' | 'ZASIL_CZ' | 'BPOST_BE' | 'DHL_BPOST_BEL' | 'COLI_FR' | 'UB_GLS_DK' | 'UB_CORR_ES' | 'DS_TB_ES' | 'UB_CTT_PT' | 'DS_TB_PT' | 'ECONT_BG' | 'ACS_CY' | 'UB_OMNIVA_EE' | 'UB_POST_FI' | 'UB_TAXY_GR' | 'ACS_GR' | 'POST_HR' | 'POST_HU' | 'GLS_HU' | 'UB_FAST_IE' | 'POST_IT' | 'DS_TB_IT' | 'UB_OMNIVA_LT' | 'BPOST_LU' | 'UB_OMNIVA_LV' | 'UB_POST_NO' | 'FAN_RO' | 'UB_DHL_SE' | 'POST_SI' | 'POST_SK' | 'ZASIL_SK';
+export type Carrier = 'DHL_STD_NATIONAL' | 'HERMES_KLV' | 'HERMES_STD_NATIONAL' | 'DHL_AT' | 'DHL_POST_AUT' | 'HERMES_POST_AUT' | 'POST_CH' | 'QUICK_CH' | 'POST_NL' | 'DHL_NL' | 'DHL_PL' | 'PPL' | 'ZASIL_CZ' | 'BPOST_BE' | 'DHL_BPOST_BEL' | 'COLI_FR' | 'UB_GLS_DK' | 'UB_CORR_ES' | 'DS_TB_ES' | 'UB_CTT_PT' | 'DS_TB_PT' | 'ECONT_BG' | 'ACS_CY' | 'UB_OMNIVA_EE' | 'UB_POST_FI' | 'UB_TAXY_GR' | 'ACS_GR' | 'POST_HR' | 'POST_HU' | 'GLS_HU' | 'UB_FAST_IE' | 'POST_IT' | 'DS_TB_IT' | 'UB_OMNIVA_LT' | 'BPOST_LU' | 'UB_OMNIVA_LV' | 'UB_POST_NO' | 'FAN_RO' | 'UB_DHL_SE' | 'POST_SI' | 'POST_SK' | 'ZASIL_SK';
 
 /**
  * ShipmentItemSchema
@@ -1413,7 +1426,7 @@ export type GetOrderParams = {
     customer_key?: string | null;
     /**
      * Carrier Key
-     * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AUT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_CTT_PT", "DS_TB_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
+     * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_CTT_PT", "DS_TB_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
      */
     carrier_key?: Carrier | null;
     /**
@@ -2281,7 +2294,7 @@ export type GetApiV1OrdersData = {
         customer_key?: string | null;
         /**
          * Carrier Key
-         * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AUT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_CTT_PT", "DS_TB_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
+         * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_CTT_PT", "DS_TB_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
          */
         carrier_key?: Carrier | null;
         /**

@@ -1500,12 +1500,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AUT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
+              "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
               "q": "carrier_key__icontains",
               "title": "Carrier Key"
             },
             "required": false,
-            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AUT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\"."
+            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\"."
           },
           {
             "in": "query",
@@ -3007,7 +3007,24 @@
                 "type": "null"
               }
             ],
+            "deprecated": true,
+            "description": "Use descriptions instead",
             "title": "Description"
+          },
+          "descriptions": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedDescriptionSchema"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "examples": [
+              {
+                "de": "This is a description"
+              }
+            ]
           },
           "color": {
             "anyOf": [
@@ -3167,6 +3184,7 @@
           "hs_code",
           "name",
           "description",
+          "descriptions",
           "color",
           "size",
           "second_size",
@@ -3202,6 +3220,14 @@
           "pagination"
         ],
         "title": "GetProductsResponseSchema",
+        "type": "object"
+      },
+      "LocalizedDescriptionSchema": {
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Schema for handling localized descriptions with locale keys.",
+        "title": "LocalizedDescriptionSchema",
         "type": "object"
       },
       "MaterialCompositionNonTextileSchema": {
@@ -3487,13 +3513,28 @@
             "title": "Name"
           },
           "description": {
-            "description": "Provide a detailed description of the product in German. Maximum 2500 characters.",
-            "examples": [
-              "Eine schöne Cap für den Sommer."
+            "anyOf": [
+              {
+                "maxLength": 2500,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "maxLength": 2500,
-            "title": "Description",
-            "type": "string"
+            "deprecated": true,
+            "description": "Use descriptions instead",
+            "title": "Description"
+          },
+          "descriptions": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocalizedDescriptionSchema"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "color": {
             "description": "ID (integer) of this property",
@@ -3676,7 +3717,6 @@
           "style_key",
           "sku",
           "hs_code",
-          "description",
           "color",
           "size",
           "brand",
@@ -4594,7 +4634,7 @@
           "DHL_STD_NATIONAL",
           "HERMES_KLV",
           "HERMES_STD_NATIONAL",
-          "DHL_AUT",
+          "DHL_AT",
           "DHL_POST_AUT",
           "HERMES_POST_AUT",
           "POST_CH",
@@ -4800,7 +4840,7 @@
                 "type": "null"
               }
             ],
-            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AUT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
+            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
             "q": "carrier_key__icontains",
             "title": "Carrier Key"
           },
