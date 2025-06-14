@@ -2291,7 +2291,7 @@
           },
           "billing_country_code": {
             "description": "Billing country code",
-            "maxLength": 3,
+            "maxLength": 2,
             "title": "Billing Country Code",
             "type": "string"
           },
@@ -2375,7 +2375,7 @@
           "shipping_country_code": {
             "anyOf": [
               {
-                "maxLength": 3,
+                "maxLength": 2,
                 "type": "string"
               },
               {
