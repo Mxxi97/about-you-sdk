@@ -510,7 +510,7 @@ export type GetProductsParams = {
     sku?: string | null;
     /**
      * Status
-     * Status of the product to filter by. Choose from: "draft", "pending_approval", "rejected", "pending_active", "active", "inactive", "archived".
+     * Status of the product to filter by. Choose from: "draft", "pending_approval", "rejected", "pending_active", "active", "inactive", "archived", "problem".
      */
     status?: Status | null;
 };
@@ -1789,7 +1789,7 @@ export type GetApiV1ProductsData = {
         sku?: string | null;
         /**
          * Status
-         * Status of the product to filter by. Choose from: "draft", "pending_approval", "rejected", "pending_active", "active", "inactive", "archived".
+         * Status of the product to filter by. Choose from: "draft", "pending_approval", "rejected", "pending_active", "active", "inactive", "archived", "problem".
          */
         status?: Status | null;
         /**

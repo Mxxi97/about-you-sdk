@@ -531,12 +531,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Status of the product to filter by. Choose from: \"draft\", \"pending_approval\", \"rejected\", \"pending_active\", \"active\", \"inactive\", \"archived\".",
+              "description": "Status of the product to filter by. Choose from: \"draft\", \"pending_approval\", \"rejected\", \"pending_active\", \"active\", \"inactive\", \"archived\", \"problem\".",
               "q": "product__master__status",
               "title": "Status"
             },
             "required": false,
-            "description": "Status of the product to filter by. Choose from: \"draft\", \"pending_approval\", \"rejected\", \"pending_active\", \"active\", \"inactive\", \"archived\"."
+            "description": "Status of the product to filter by. Choose from: \"draft\", \"pending_approval\", \"rejected\", \"pending_active\", \"active\", \"inactive\", \"archived\", \"problem\"."
           },
           {
             "in": "query",
@@ -2897,7 +2897,7 @@
                 "type": "null"
               }
             ],
-            "description": "Status of the product to filter by. Choose from: \"draft\", \"pending_approval\", \"rejected\", \"pending_active\", \"active\", \"inactive\", \"archived\".",
+            "description": "Status of the product to filter by. Choose from: \"draft\", \"pending_approval\", \"rejected\", \"pending_active\", \"active\", \"inactive\", \"archived\", \"problem\".",
             "q": "product__master__status",
             "title": "Status"
           }
