@@ -402,6 +402,11 @@ export type OrderItemSchema = {
      * Status
      */
     status?: string;
+    /**
+     * Shopify Fulfillment Item Id
+     * Shopify Fulfillment Item ID
+     */
+    shopify_fulfillment_item_id?: string | null;
 };
 
 /**
@@ -1514,6 +1519,78 @@ export type ReturnRequestSchema = {
     items: Array<ReturnItemSchema>;
 };
 
+/**
+ * ListReportsParams
+ */
+export type ListReportsParams = {
+    /**
+     * Report type
+     * Filter by report type. Choose from: "SELLABLE_STOCK", "WAREHOUSE_MOVEMENTS".
+     */
+    type?: ReportType | null;
+    /**
+     * Search query
+     * Search query to filter reports by number.
+     */
+    query?: string | null;
+};
+
+/**
+ * ReportType
+ */
+export type ReportType = 'SELLABLE_STOCK' | 'WAREHOUSE_MOVEMENTS';
+
+/**
+ * PagedReportSchema
+ */
+export type PagedReportSchema = {
+    /**
+     * Items
+     */
+    items: Array<ReportSchema>;
+    pagination: Pagination;
+};
+
+/**
+ * ReportSchema
+ */
+export type ReportSchema = {
+    /**
+     * Id
+     * ID (integer) of this property
+     */
+    id: number;
+    /**
+     * Type of the report
+     */
+    type: ReportType;
+    /**
+     * Number
+     * Report number
+     */
+    number: string;
+    /**
+     * File Name
+     * Name of the report file
+     */
+    file_name: string;
+    /**
+     * File Url
+     * URL to download the report file
+     */
+    file_url: string;
+    /**
+     * Created At
+     * When the report was created
+     */
+    created_at: string;
+    /**
+     * Updated At
+     * When the report was last updated
+     */
+    updated_at: string;
+};
+
 export type GetApiV1WebhooksTypesData = {
     body?: never;
     path?: never;
@@ -2477,6 +2554,93 @@ export type PostApiV1OrdersReturnResponses = {
 };
 
 export type PostApiV1OrdersReturnResponse = PostApiV1OrdersReturnResponses[keyof PostApiV1OrdersReturnResponses];
+
+export type GetApiV1ReportsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Report type
+         * Filter by report type. Choose from: "SELLABLE_STOCK", "WAREHOUSE_MOVEMENTS".
+         */
+        type?: ReportType | null;
+        /**
+         * Search query
+         * Search query to filter reports by number.
+         */
+        query?: string | null;
+        /**
+         * Page
+         * Page number to retrieve items from.
+         */
+        page?: number;
+        /**
+         * Per Page
+         * Number of items per page.
+         */
+        per_page?: number;
+    };
+    url: '/api/v1/reports/';
+};
+
+export type GetApiV1ReportsErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+};
+
+export type GetApiV1ReportsError = GetApiV1ReportsErrors[keyof GetApiV1ReportsErrors];
+
+export type GetApiV1ReportsResponses = {
+    /**
+     * OK
+     */
+    200: PagedReportSchema;
+};
+
+export type GetApiV1ReportsResponse = GetApiV1ReportsResponses[keyof GetApiV1ReportsResponses];
+
+export type GetApiV1ReportsByReportIdDownloadData = {
+    body?: never;
+    path: {
+        /**
+         * Report Id
+         */
+        report_id: number;
+    };
+    query?: never;
+    url: '/api/v1/reports/{report_id}/download';
+};
+
+export type GetApiV1ReportsByReportIdDownloadErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+    /**
+     * Forbidden
+     */
+    403: BadRequestSchema;
+    /**
+     * Not Found
+     */
+    404: BadRequestSchema;
+    /**
+     * Internal Server Error
+     */
+    500: BadRequestSchema;
+};
+
+export type GetApiV1ReportsByReportIdDownloadError = GetApiV1ReportsByReportIdDownloadErrors[keyof GetApiV1ReportsByReportIdDownloadErrors];
 
 export type ClientOptions = {
     baseURL: string;

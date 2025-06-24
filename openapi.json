@@ -1914,6 +1914,193 @@
           }
         ]
       }
+    },
+    "/api/v1/reports/": {
+      "get": {
+        "summary": "List Reports",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "type",
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ReportType"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\".",
+              "title": "Report type"
+            },
+            "required": false,
+            "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\"."
+          },
+          {
+            "in": "query",
+            "name": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Search query to filter reports by number.",
+              "q": "number__icontains",
+              "title": "Search query"
+            },
+            "required": false,
+            "description": "Search query to filter reports by number."
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "description": "Page number to retrieve items from.",
+              "minimum": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Page number to retrieve items from."
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 20,
+              "description": "Number of items per page.",
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Number of items per page."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedReportSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Reports"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/reports/{report_id}/download": {
+      "get": {
+        "summary": "Download Report",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "report_id",
+            "schema": {
+              "title": "Report Id",
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Reports"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -2676,6 +2863,19 @@
             "maxLength": 255,
             "title": "Status",
             "type": "string"
+          },
+          "shopify_fulfillment_item_id": {
+            "anyOf": [
+              {
+                "maxLength": 255,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Shopify Fulfillment Item ID",
+            "title": "Shopify Fulfillment Item Id"
           }
         },
         "required": [
@@ -5019,6 +5219,143 @@
           "items"
         ],
         "title": "ReturnRequestSchema",
+        "type": "object"
+      },
+      "ListReportsParams": {
+        "properties": {
+          "type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReportType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\".",
+            "title": "Report type"
+          },
+          "query": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Search query to filter reports by number.",
+            "q": "number__icontains",
+            "title": "Search query"
+          }
+        },
+        "title": "ListReportsParams",
+        "type": "object"
+      },
+      "ReportType": {
+        "enum": [
+          "SELLABLE_STOCK",
+          "WAREHOUSE_MOVEMENTS"
+        ],
+        "title": "ReportType",
+        "type": "string"
+      },
+      "PagedReportSchema": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ReportSchema"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "required": [
+          "items",
+          "pagination"
+        ],
+        "title": "PagedReportSchema",
+        "type": "object"
+      },
+      "ReportSchema": {
+        "properties": {
+          "id": {
+            "description": "ID (integer) of this property",
+            "examples": [
+              1,
+              2,
+              3
+            ],
+            "minimum": 1,
+            "title": "Id",
+            "type": "integer"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ReportType",
+            "description": "Type of the report",
+            "examples": [
+              "SELLABLE_STOCK",
+              "WAREHOUSE_MOVEMENTS"
+            ]
+          },
+          "number": {
+            "description": "Report number",
+            "examples": [
+              "REP-001",
+              "REP-002"
+            ],
+            "maxLength": 255,
+            "title": "Number",
+            "type": "string"
+          },
+          "file_name": {
+            "description": "Name of the report file",
+            "examples": [
+              "sellable_stock_report_123.csv"
+            ],
+            "title": "File Name",
+            "type": "string"
+          },
+          "file_url": {
+            "description": "URL to download the report file",
+            "examples": [
+              "https://example.com/reports/file.pdf"
+            ],
+            "title": "File Url",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "When the report was created",
+            "examples": [
+              "2024-01-01T12:00:00Z"
+            ],
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "updated_at": {
+            "description": "When the report was last updated",
+            "examples": [
+              "2024-01-01T12:00:00Z"
+            ],
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "number",
+          "file_name",
+          "file_url",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "ReportSchema",
         "type": "object"
       }
     },
