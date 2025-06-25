@@ -1111,6 +1111,27 @@ export type AttributeSchema = {
 };
 
 /**
+ * BrandSchema
+ */
+export type BrandSchema = {
+    /**
+     * Id
+     * ID (integer) of this property
+     */
+    id: number;
+    /**
+     * Key
+     * Identifier of the brand
+     */
+    key: string;
+    /**
+     * Name
+     * Name of the brand
+     */
+    name: string;
+};
+
+/**
  * UpsertProductBatchResultsResponseSchema
  */
 export type UpsertProductBatchResultsResponseSchema = {
@@ -2088,6 +2109,23 @@ export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponses = {
 };
 
 export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponse = GetApiV1CategoriesByCategoryIdAttributeGroupsResponses[keyof GetApiV1CategoriesByCategoryIdAttributeGroupsResponses];
+
+export type GetApiV1BrandsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/brands/';
+};
+
+export type GetApiV1BrandsResponses = {
+    /**
+     * Response
+     * OK
+     */
+    200: Array<BrandSchema>;
+};
+
+export type GetApiV1BrandsResponse = GetApiV1BrandsResponses[keyof GetApiV1BrandsResponses];
 
 export type GetApiV1ResultsProductsData = {
     body?: never;

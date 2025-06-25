@@ -977,6 +977,36 @@
         ]
       }
     },
+    "/api/v1/brands/": {
+      "get": {
+        "summary": "List Brands",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BrandSchema"
+                  },
+                  "title": "Response",
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Brands"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/results/products": {
       "get": {
         "summary": "Get Product Batch Results",
@@ -4379,6 +4409,40 @@
           "frontend_name"
         ],
         "title": "AttributeSchema",
+        "type": "object"
+      },
+      "BrandSchema": {
+        "properties": {
+          "id": {
+            "description": "ID (integer) of this property",
+            "examples": [
+              1,
+              2,
+              3
+            ],
+            "minimum": 1,
+            "title": "Id",
+            "type": "integer"
+          },
+          "key": {
+            "description": "Identifier of the brand",
+            "title": "Key",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the brand",
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "name"
+        ],
+        "title": "BrandSchema",
         "type": "object"
       },
       "UpsertProductBatchResultsResponseSchema": {
