@@ -889,6 +889,77 @@ export type UpsertProductSchema = {
 };
 
 /**
+ * RejectedProductsParams
+ */
+export type RejectedProductsParams = {
+    /**
+     * Style Key
+     * Style key to search for
+     */
+    style_key?: string | null;
+};
+
+/**
+ * PagedRejectedProductSchema
+ */
+export type PagedRejectedProductSchema = {
+    /**
+     * Items
+     */
+    items: Array<RejectedProductSchema>;
+    pagination: Pagination;
+};
+
+/**
+ * RejectedProductSchema
+ */
+export type RejectedProductSchema = {
+    /**
+     * Style Key
+     * Style key of the product
+     */
+    style_key?: string | null;
+    /**
+     * Rejection Reasons
+     */
+    rejection_reasons: Array<RejectionReasonSchema>;
+    /**
+     * Rejection Message
+     * The rejection message for the product master
+     */
+    rejection_message?: string | null;
+    /**
+     * Rejected Product Ids Hint
+     * Used to hint which products are affected by the rejection reason given
+     */
+    rejected_product_ids_hint?: {
+        [key: string]: unknown;
+    } | null;
+};
+
+/**
+ * RejectionReasonSchema
+ */
+export type RejectionReasonSchema = {
+    /**
+     * Key
+     */
+    key: string;
+    /**
+     * Type
+     */
+    type: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
  * UpdateProductStatusResponseSchema
  */
 export type UpdateProductStatusResponseSchema = {
@@ -1954,6 +2025,51 @@ export type PostApiV1ProductsResponses = {
 };
 
 export type PostApiV1ProductsResponse = PostApiV1ProductsResponses[keyof PostApiV1ProductsResponses];
+
+export type GetApiV1ProductsRejectedData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Style Key
+         * Style key to search for
+         */
+        style_key?: string | null;
+        /**
+         * Page
+         * Page number to retrieve items from.
+         */
+        page?: number;
+        /**
+         * Per Page
+         * Number of items per page.
+         */
+        per_page?: number;
+    };
+    url: '/api/v1/products/rejected';
+};
+
+export type GetApiV1ProductsRejectedErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+};
+
+export type GetApiV1ProductsRejectedError = GetApiV1ProductsRejectedErrors[keyof GetApiV1ProductsRejectedErrors];
+
+export type GetApiV1ProductsRejectedResponses = {
+    /**
+     * OK
+     */
+    200: PagedRejectedProductSchema;
+};
+
+export type GetApiV1ProductsRejectedResponse = GetApiV1ProductsRejectedResponses[keyof GetApiV1ProductsRejectedResponses];
 
 export type PutApiV1ProductsStatusData = {
     body: UpdateProductStatusSchema;

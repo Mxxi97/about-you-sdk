@@ -662,6 +662,99 @@
         ]
       }
     },
+    "/api/v1/products/rejected": {
+      "get": {
+        "summary": "Get Rejected Products",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "style_key",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Style key to search for",
+              "q": "external_reference_key__icontains",
+              "title": "Style Key"
+            },
+            "required": false,
+            "description": "Style key to search for"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "description": "Page number to retrieve items from.",
+              "minimum": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Page number to retrieve items from."
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 20,
+              "description": "Number of items per page.",
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Number of items per page."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedRejectedProductSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Products"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/products/status": {
       "put": {
         "summary": "Update Product Status",
@@ -3979,6 +4072,128 @@
           "items"
         ],
         "title": "UpsertProductSchema",
+        "type": "object"
+      },
+      "RejectedProductsParams": {
+        "properties": {
+          "style_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Style key to search for",
+            "q": "external_reference_key__icontains",
+            "title": "Style Key"
+          }
+        },
+        "title": "RejectedProductsParams",
+        "type": "object"
+      },
+      "PagedRejectedProductSchema": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RejectedProductSchema"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "required": [
+          "items",
+          "pagination"
+        ],
+        "title": "PagedRejectedProductSchema",
+        "type": "object"
+      },
+      "RejectedProductSchema": {
+        "properties": {
+          "style_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Style key of the product",
+            "title": "Style Key"
+          },
+          "rejection_reasons": {
+            "items": {
+              "$ref": "#/components/schemas/RejectionReasonSchema"
+            },
+            "title": "Rejection Reasons",
+            "type": "array"
+          },
+          "rejection_message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The rejection message for the product master",
+            "title": "Rejection Message"
+          },
+          "rejected_product_ids_hint": {
+            "anyOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Used to hint which products are affected by the rejection reason given",
+            "title": "Rejected Product Ids Hint"
+          }
+        },
+        "required": [
+          "rejection_reasons"
+        ],
+        "title": "RejectedProductSchema",
+        "type": "object"
+      },
+      "RejectionReasonSchema": {
+        "properties": {
+          "key": {
+            "maxLength": 255,
+            "title": "Key",
+            "type": "string"
+          },
+          "type": {
+            "maxLength": 255,
+            "title": "Type",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 255,
+            "title": "Name",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "type",
+          "name",
+          "description"
+        ],
+        "title": "RejectionReasonSchema",
         "type": "object"
       },
       "UpdateProductStatusResponseSchema": {
