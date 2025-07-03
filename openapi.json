@@ -2273,7 +2273,8 @@
           "order_items.shipped",
           "order_items.cancelled",
           "order_items.returned",
-          "stock.updated"
+          "stock.updated",
+          "product_master.status_updated"
         ],
         "title": "EventType",
         "type": "string"

@@ -28,7 +28,7 @@ export type BadRequestSchema = {
 /**
  * EventType
  */
-export type EventType = 'order.created' | 'order.cancelled' | 'order.shipped' | 'order.returned' | 'order_items.shipped' | 'order_items.cancelled' | 'order_items.returned' | 'stock.updated';
+export type EventType = 'order.created' | 'order.cancelled' | 'order.shipped' | 'order.returned' | 'order_items.shipped' | 'order_items.cancelled' | 'order_items.returned' | 'stock.updated' | 'product_master.status_updated';
 
 /**
  * WebhookSubscriptionSchema
