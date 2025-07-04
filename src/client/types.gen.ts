@@ -1182,6 +1182,48 @@ export type AttributeSchema = {
 };
 
 /**
+ * CountriesAndLocalesResponseSchema
+ */
+export type CountriesAndLocalesResponseSchema = {
+    /**
+     * Countries
+     */
+    countries: Array<CountrySchema>;
+    /**
+     * Locales
+     */
+    locales: Array<LocaleSchema>;
+};
+
+/**
+ * CountrySchema
+ */
+export type CountrySchema = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+};
+
+/**
+ * LocaleSchema
+ */
+export type LocaleSchema = {
+    /**
+     * Code
+     */
+    code: string;
+    /**
+     * Name
+     */
+    name: string;
+};
+
+/**
  * BrandSchema
  */
 export type BrandSchema = {
@@ -2225,6 +2267,35 @@ export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponses = {
 };
 
 export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponse = GetApiV1CategoriesByCategoryIdAttributeGroupsResponses[keyof GetApiV1CategoriesByCategoryIdAttributeGroupsResponses];
+
+export type GetApiV1CountriesData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/countries/';
+};
+
+export type GetApiV1CountriesErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+};
+
+export type GetApiV1CountriesError = GetApiV1CountriesErrors[keyof GetApiV1CountriesErrors];
+
+export type GetApiV1CountriesResponses = {
+    /**
+     * OK
+     */
+    200: CountriesAndLocalesResponseSchema;
+};
+
+export type GetApiV1CountriesResponse = GetApiV1CountriesResponses[keyof GetApiV1CountriesResponses];
 
 export type GetApiV1BrandsData = {
     body?: never;

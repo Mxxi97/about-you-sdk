@@ -1070,6 +1070,52 @@
         ]
       }
     },
+    "/api/v1/countries/": {
+      "get": {
+        "summary": "Get Countries",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountriesAndLocalesResponseSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Countries"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/brands/": {
       "get": {
         "summary": "List Brands",
@@ -4625,6 +4671,66 @@
           "frontend_name"
         ],
         "title": "AttributeSchema",
+        "type": "object"
+      },
+      "CountriesAndLocalesResponseSchema": {
+        "properties": {
+          "countries": {
+            "items": {
+              "$ref": "#/components/schemas/CountrySchema"
+            },
+            "title": "Countries",
+            "type": "array"
+          },
+          "locales": {
+            "items": {
+              "$ref": "#/components/schemas/LocaleSchema"
+            },
+            "title": "Locales",
+            "type": "array"
+          }
+        },
+        "required": [
+          "countries",
+          "locales"
+        ],
+        "title": "CountriesAndLocalesResponseSchema",
+        "type": "object"
+      },
+      "CountrySchema": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "name"
+        ],
+        "title": "CountrySchema",
+        "type": "object"
+      },
+      "LocaleSchema": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "name"
+        ],
+        "title": "LocaleSchema",
         "type": "object"
       },
       "BrandSchema": {
