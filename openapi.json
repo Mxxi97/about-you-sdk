@@ -3877,8 +3877,9 @@
                 "type": "null"
               }
             ],
+            "description": "Include only the product/design name. Don't add categories, colors, materials etc. If there is no specific design name, leave the field empty.",
             "examples": [
-              "Cap 'Gwendolyn'"
+              "Gwendolyn"
             ],
             "title": "Name"
           },

@@ -804,6 +804,7 @@ export type UpsertProductItemSchema = {
     hs_code: string;
     /**
      * Name
+     * Include only the product/design name. Don't add categories, colors, materials etc. If there is no specific design name, leave the field empty.
      */
     name?: string | null;
     /**
