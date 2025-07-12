@@ -841,7 +841,7 @@ export type UpsertProductItemSchema = {
      * Quantity
      * Quantity of the product variant.
      */
-    quantity: number;
+    quantity?: number | null;
     /**
      * Weight
      * Weight of the product in grams.

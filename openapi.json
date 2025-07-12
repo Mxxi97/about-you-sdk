@@ -3977,13 +3977,20 @@
             "type": "integer"
           },
           "quantity": {
+            "anyOf": [
+              {
+                "minimum": 0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Quantity of the product variant.",
             "examples": [
               100
             ],
-            "minimum": 0,
-            "title": "Quantity",
-            "type": "integer"
+            "title": "Quantity"
           },
           "weight": {
             "description": "Weight of the product in grams.",
@@ -4092,7 +4099,6 @@
           "size",
           "brand",
           "category",
-          "quantity",
           "weight",
           "countries",
           "country_of_origin",
