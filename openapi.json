@@ -2577,6 +2577,28 @@
             "title": "Delivery Document Url",
             "type": "string"
           },
+          "status": {
+            "default": "open",
+            "maxLength": 255,
+            "title": "Status",
+            "type": "string"
+          },
+          "customer_key": {
+            "description": "Reference key of the customer (MAPI: customer_key)",
+            "maxLength": 255,
+            "title": "Customer Key",
+            "type": "string"
+          },
+          "carrier_key": {
+            "description": "Carrier key",
+            "maxLength": 255,
+            "title": "Carrier Key",
+            "type": "string"
+          },
+          "shop": {
+            "title": "Shop",
+            "type": "integer"
+          },
           "created_at": {
             "format": "date-time",
             "title": "Created At",
@@ -2587,10 +2609,11 @@
             "title": "Updated At",
             "type": "string"
           },
-          "customer_key": {
-            "description": "Reference key of the customer (MAPI: customer_key)",
+          "fulfillment_type": {
+            "default": "dropshipping",
+            "description": "Fulfillment type",
             "maxLength": 255,
-            "title": "Customer Key",
+            "title": "Fulfillment Type",
             "type": "string"
           },
           "custom_data": {
@@ -2604,16 +2627,6 @@
             ],
             "description": "Custom data (MAPI: customData)",
             "title": "Custom Data"
-          },
-          "shop": {
-            "title": "Shop",
-            "type": "integer"
-          },
-          "carrier_key": {
-            "description": "Carrier key",
-            "maxLength": 255,
-            "title": "Carrier Key",
-            "type": "string"
           },
           "payment_method": {
             "anyOf": [
@@ -2847,43 +2860,17 @@
             "description": "Cost of the order with tax in the smallest currency unit (e.g. cents for Euro)",
             "title": "Cost With Tax",
             "type": "integer"
-          },
-          "shopify_order_id": {
-            "anyOf": [
-              {
-                "maxLength": 255,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Shopify Order ID",
-            "title": "Shopify Order Id"
-          },
-          "status": {
-            "default": "open",
-            "maxLength": 255,
-            "title": "Status",
-            "type": "string"
-          },
-          "fulfillment_type": {
-            "default": "dropshipping",
-            "description": "Fulfillment type",
-            "maxLength": 255,
-            "title": "Fulfillment Type",
-            "type": "string"
           }
         },
         "required": [
           "order_items",
           "order_number",
           "delivery_document_url",
+          "customer_key",
+          "carrier_key",
+          "shop",
           "created_at",
           "updated_at",
-          "customer_key",
-          "shop",
-          "carrier_key",
           "billing_street",
           "billing_zip_code",
           "billing_city",
@@ -2996,10 +2983,6 @@
             ],
             "title": "ID"
           },
-          "product_variant": {
-            "title": "Product Variant",
-            "type": "integer"
-          },
           "vat": {
             "default": 19.0,
             "description": "The tax percentage",
@@ -3033,26 +3016,12 @@
             "maxLength": 255,
             "title": "Status",
             "type": "string"
-          },
-          "shopify_fulfillment_item_id": {
-            "anyOf": [
-              {
-                "maxLength": 255,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Shopify Fulfillment Item ID",
-            "title": "Shopify Fulfillment Item Id"
           }
         },
         "required": [
           "return_tracking_key",
           "shipment_tracking_key",
           "sku",
-          "product_variant",
           "price_without_tax",
           "price_with_tax"
         ],

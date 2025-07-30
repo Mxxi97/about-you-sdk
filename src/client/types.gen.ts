@@ -157,6 +157,24 @@ export type GetOrderSchema = {
      */
     delivery_document_url: string;
     /**
+     * Status
+     */
+    status?: string;
+    /**
+     * Customer Key
+     * Reference key of the customer (MAPI: customer_key)
+     */
+    customer_key: string;
+    /**
+     * Carrier Key
+     * Carrier key
+     */
+    carrier_key: string;
+    /**
+     * Shop
+     */
+    shop: number;
+    /**
      * Created At
      */
     created_at: string;
@@ -165,10 +183,10 @@ export type GetOrderSchema = {
      */
     updated_at: string;
     /**
-     * Customer Key
-     * Reference key of the customer (MAPI: customer_key)
+     * Fulfillment Type
+     * Fulfillment type
      */
-    customer_key: string;
+    fulfillment_type?: string;
     /**
      * Custom Data
      * Custom data (MAPI: customData)
@@ -176,15 +194,6 @@ export type GetOrderSchema = {
     custom_data?: {
         [key: string]: unknown;
     } | null;
-    /**
-     * Shop
-     */
-    shop: number;
-    /**
-     * Carrier Key
-     * Carrier key
-     */
-    carrier_key: string;
     /**
      * Payment Method
      * Payment method
@@ -305,20 +314,6 @@ export type GetOrderSchema = {
      * Cost of the order with tax in the smallest currency unit (e.g. cents for Euro)
      */
     cost_with_tax: number;
-    /**
-     * Shopify Order Id
-     * Shopify Order ID
-     */
-    shopify_order_id?: string | null;
-    /**
-     * Status
-     */
-    status?: string;
-    /**
-     * Fulfillment Type
-     * Fulfillment type
-     */
-    fulfillment_type?: string;
 };
 
 /**
@@ -373,10 +368,6 @@ export type OrderItemSchema = {
      */
     id?: number | null;
     /**
-     * Product Variant
-     */
-    product_variant: number;
-    /**
      * Vat
      * The tax percentage
      */
@@ -402,11 +393,6 @@ export type OrderItemSchema = {
      * Status
      */
     status?: string;
-    /**
-     * Shopify Fulfillment Item Id
-     * Shopify Fulfillment Item ID
-     */
-    shopify_fulfillment_item_id?: string | null;
 };
 
 /**
