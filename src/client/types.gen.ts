@@ -156,10 +156,7 @@ export type GetOrderSchema = {
      * Delivery Document Url
      */
     delivery_document_url: string;
-    /**
-     * Status
-     */
-    status?: string;
+    status: OrdersAppModelsOrderOrderStatusChoices;
     /**
      * Customer Key
      * Reference key of the customer (MAPI: customer_key)
@@ -363,6 +360,7 @@ export type OrderItemSchema = {
      * SKU of the product variant
      */
     sku: string;
+    status: OrdersAppModelsOrderItemOrderItemStatusChoices;
     /**
      * ID
      */
@@ -389,11 +387,17 @@ export type OrderItemSchema = {
     custom_data?: {
         [key: string]: unknown;
     } | null;
-    /**
-     * Status
-     */
-    status?: string;
 };
+
+/**
+ * StatusChoices
+ */
+export type OrdersAppModelsOrderOrderStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned' | 'mixed';
+
+/**
+ * StatusChoices
+ */
+export type OrdersAppModelsOrderItemOrderItemStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
 
 /**
  * OrderCancelledWebhookSchema
@@ -486,6 +490,259 @@ export type OrderReturnedWebhookSchema = {
 };
 
 /**
+ * GetShipmentSchema
+ */
+export type GetShipmentSchema = {
+    /**
+     * Shipment items
+     * List of order items in this shipment
+     */
+    items: Array<OrderItemSchema>;
+    /**
+     * Carrier Key
+     */
+    carrier_key?: string | null;
+    /**
+     * Return Tracking Key
+     */
+    return_tracking_key?: string | null;
+    /**
+     * Tracking Key
+     */
+    tracking_key?: string | null;
+};
+
+/**
+ * ShipmentItemsShippedWebhookSchema
+ */
+export type ShipmentItemsShippedWebhookSchema = {
+    /**
+     * Id
+     * ID of the webhook message
+     */
+    id: number;
+    /**
+     * Event
+     * Event type of webhook message
+     */
+    event: 'order_items.shipped';
+    /**
+     * Timestamp
+     * UTC timestamp when the event was created
+     */
+    timestamp?: string;
+    /**
+     * Shipment payload of the triggered event
+     */
+    message: GetShipmentSchema;
+    /**
+     * Subscription Id
+     * ID of the subscription
+     */
+    subscription_id?: number | null;
+};
+
+/**
+ * StatusChoices
+ */
+export type StatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
+
+/**
+ * ShipmentItemsCancelledWebhookSchema
+ */
+export type ShipmentItemsCancelledWebhookSchema = {
+    /**
+     * Id
+     * ID of the webhook message
+     */
+    id: number;
+    /**
+     * Event
+     * Event type of webhook message
+     */
+    event: 'order_items.cancelled';
+    /**
+     * Timestamp
+     * UTC timestamp when the event was created
+     */
+    timestamp?: string;
+    /**
+     * Shipment payload of the triggered event
+     */
+    message: GetShipmentSchema;
+    /**
+     * Subscription Id
+     * ID of the subscription
+     */
+    subscription_id?: number | null;
+};
+
+/**
+ * ShipmentItemsReturnedWebhookSchema
+ */
+export type ShipmentItemsReturnedWebhookSchema = {
+    /**
+     * Id
+     * ID of the webhook message
+     */
+    id: number;
+    /**
+     * Event
+     * Event type of webhook message
+     */
+    event: 'order_items.returned';
+    /**
+     * Timestamp
+     * UTC timestamp when the event was created
+     */
+    timestamp?: string;
+    /**
+     * Shipment payload of the triggered event
+     */
+    message: GetShipmentSchema;
+    /**
+     * Subscription Id
+     * ID of the subscription
+     */
+    subscription_id?: number | null;
+};
+
+/**
+ * StockWebhookMessageSchema
+ */
+export type StockWebhookMessageSchema = {
+    /**
+     * Id
+     * ID of the webhook message
+     */
+    id: number;
+    /**
+     * Event
+     * Event type of webhook message
+     */
+    event: 'stock.updated';
+    /**
+     * Timestamp
+     * UTC timestamp when the event was created
+     */
+    timestamp?: string;
+    /**
+     * Message
+     * Stock payload of the triggered event
+     */
+    message: Array<WebhookStockSchema>;
+    /**
+     * Subscription Id
+     * ID of the subscription
+     */
+    subscription_id?: number | null;
+};
+
+/**
+ * WebhookStockSchema
+ */
+export type WebhookStockSchema = {
+    /**
+     * Sku
+     * Stock Keeping Unit identifier
+     */
+    sku: string;
+    /**
+     * Quantity
+     * Stock quantity of the product variant in the merchant's warehouse.
+     */
+    quantity: number | null;
+    /**
+     * Quantity Fbm
+     * Stock quantity of the product variant in ABOUT YOU warehouses.
+     */
+    quantity_fbm: number | null;
+};
+
+/**
+ * GetProductMasterSchema
+ */
+export type GetProductMasterSchema = {
+    /**
+     * External Reference Key
+     * Style key of the product master
+     */
+    external_reference_key?: string | null;
+    /**
+     * Status
+     * Current status of the product master
+     */
+    status: string;
+    /**
+     * Rejection Reasons
+     * Rejection reasons if the product master is rejected
+     */
+    rejection_reasons?: Array<RejectionReasonSchema> | null;
+    /**
+     * Rejection Message
+     * Rejection message if the product master is rejected
+     */
+    rejection_message?: string | null;
+    /**
+     * Rejected Product Ids Hint
+     * Hint about which products are affected by rejection
+     */
+    rejected_product_ids_hint?: Array<string> | null;
+};
+
+/**
+ * ProductMasterStatusUpdatedWebhookMessageSchema
+ */
+export type ProductMasterStatusUpdatedWebhookMessageSchema = {
+    /**
+     * Id
+     * ID of the webhook message
+     */
+    id: number;
+    /**
+     * Event
+     * Event type of webhook message
+     */
+    event: 'product_master.status_updated';
+    /**
+     * Timestamp
+     * UTC timestamp when the event was created
+     */
+    timestamp?: string;
+    /**
+     * Product master payload of the triggered event
+     */
+    message: GetProductMasterSchema;
+    /**
+     * Subscription Id
+     * ID of the subscription
+     */
+    subscription_id?: number | null;
+};
+
+/**
+ * RejectionReasonSchema
+ */
+export type RejectionReasonSchema = {
+    /**
+     * Key
+     */
+    key: string;
+    /**
+     * Type
+     */
+    type: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
  * GetProductsParams
  */
 export type GetProductsParams = {
@@ -530,7 +787,7 @@ export type Input = {
 /**
  * Status
  */
-export type Status = 'pending' | 'processing' | 'completed' | 'failed';
+export type Status = 'draft' | 'pending_approval' | 'rejected' | 'pending_active' | 'active' | 'inactive' | 'archived' | 'problem';
 
 /**
  * GetProductItemSchema
@@ -540,10 +797,7 @@ export type GetProductItemSchema = {
      * Style Key
      */
     style_key: string | null;
-    /**
-     * Status
-     */
-    status: string | null;
+    status: Status;
     /**
      * Sku
      */
@@ -925,28 +1179,6 @@ export type RejectedProductSchema = {
 };
 
 /**
- * RejectionReasonSchema
- */
-export type RejectionReasonSchema = {
-    /**
-     * Key
-     */
-    key: string;
-    /**
-     * Type
-     */
-    type: string;
-    /**
-     * Name
-     */
-    name: string;
-    /**
-     * Description
-     */
-    description: string;
-};
-
-/**
  * UpdateProductStatusResponseSchema
  */
 export type UpdateProductStatusResponseSchema = {
@@ -1232,6 +1464,11 @@ export type BrandSchema = {
 };
 
 /**
+ * RequestStatus
+ */
+export type RequestStatus = 'pending' | 'processing' | 'completed' | 'failed';
+
+/**
  * UpsertProductBatchResultsResponseSchema
  */
 export type UpsertProductBatchResultsResponseSchema = {
@@ -1243,7 +1480,7 @@ export type UpsertProductBatchResultsResponseSchema = {
     /**
      * Status of the batch processing
      */
-    status: Status;
+    status: RequestStatus;
     /**
      * Items
      */
@@ -1277,7 +1514,7 @@ export type UpdateProductStatusBatchResultsResponseSchema = {
     /**
      * Status
      */
-    status: Status | string;
+    status: RequestStatus | string;
     /**
      * Items
      */
@@ -1311,7 +1548,7 @@ export type StockBatchResultsResponseSchema = {
     /**
      * Status of the batch processing
      */
-    status: Status;
+    status: RequestStatus;
     /**
      * Items
      * List of result items for stock update
@@ -1346,7 +1583,7 @@ export type PriceBatchResultsResponseSchema = {
     /**
      * Status of the batch processing
      */
-    status: Status;
+    status: RequestStatus;
     /**
      * Items
      * List of result items for batch update
@@ -1407,7 +1644,7 @@ export type CancelOrderResultsResponseSchema = {
     /**
      * Status of the batch processing
      */
-    status: Status;
+    status: RequestStatus;
     /**
      * Items
      * List of result items for batch cancel order
@@ -1458,7 +1695,7 @@ export type ReturnResultsSchema = {
     /**
      * Status of the batch processing
      */
-    status: Status;
+    status: RequestStatus;
     /**
      * Items
      * List of result items for batch return order
@@ -1508,7 +1745,7 @@ export type ShipmentOrderResultsResponseSchema = {
     /**
      * Status of the batch processing
      */
-    status: Status;
+    status: RequestStatus;
     /**
      * Items
      * List of result items for batch shipment order
@@ -1585,16 +1822,6 @@ export type GetOrderParams = {
      */
     fulfillment_type?: FulfillmentTypes | null;
 };
-
-/**
- * StatusChoices
- */
-export type OrdersAppModelsOrderOrderStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned' | 'mixed';
-
-/**
- * StatusChoices
- */
-export type OrdersAppModelsOrderItemOrderItemStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
 
 /**
  * PagedGetOrderSchema
@@ -1965,6 +2192,76 @@ export type PostApiV1WebhooksOrderReturnedData = {
 };
 
 export type PostApiV1WebhooksOrderReturnedResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type PostApiV1WebhooksOrderItemsShippedData = {
+    body: ShipmentItemsShippedWebhookSchema;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhooks/order-items-shipped';
+};
+
+export type PostApiV1WebhooksOrderItemsShippedResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type PostApiV1WebhooksOrderItemsCancelledData = {
+    body: ShipmentItemsCancelledWebhookSchema;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhooks/order-items-cancelled';
+};
+
+export type PostApiV1WebhooksOrderItemsCancelledResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type PostApiV1WebhooksOrderItemsReturnedData = {
+    body: ShipmentItemsReturnedWebhookSchema;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhooks/order-items-returned';
+};
+
+export type PostApiV1WebhooksOrderItemsReturnedResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type PostApiV1WebhooksStockUpdatedData = {
+    body: StockWebhookMessageSchema;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhooks/stock-updated';
+};
+
+export type PostApiV1WebhooksStockUpdatedResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+
+export type PostApiV1WebhooksProductMasterStatusUpdatedData = {
+    body: ProductMasterStatusUpdatedWebhookMessageSchema;
+    path?: never;
+    query?: never;
+    url: '/api/v1/webhooks/product-master-status-updated';
+};
+
+export type PostApiV1WebhooksProductMasterStatusUpdatedResponses = {
     /**
      * OK
      */
