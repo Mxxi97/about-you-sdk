@@ -942,6 +942,7 @@
             }
           }
         },
+        "description": "Update product status (e.g., publish to marketplace).\n\nWhen publishing a product, some data becomes immutable, e.g. SKUs and sizes can only be added, not modified.",
         "tags": [
           "Products"
         ],

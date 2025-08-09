@@ -473,6 +473,9 @@ export const getApiV1ProductsRejected = <ThrowOnError extends boolean = false>(o
 
 /**
  * Update Product Status
+ * Update product status (e.g., publish to marketplace).
+ *
+ * When publishing a product, some data becomes immutable, e.g. SKUs and sizes can only be added, not modified.
  */
 export const putApiV1ProductsStatus = <ThrowOnError extends boolean = false>(options: Options<PutApiV1ProductsStatusData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).put<PutApiV1ProductsStatusResponses, PutApiV1ProductsStatusErrors, ThrowOnError>({
