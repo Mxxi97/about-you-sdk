@@ -4633,6 +4633,8 @@
             "examples": [
               400
             ],
+            "maximum": 100000,
+            "minimum": 0,
             "title": "Weight",
             "type": "integer"
           },
@@ -4961,6 +4963,7 @@
           },
           "quantity": {
             "description": "Quantity to update",
+            "maximum": 1000000,
             "minimum": 0,
             "title": "Quantity",
             "type": "integer"
