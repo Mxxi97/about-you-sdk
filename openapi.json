@@ -3,7 +3,7 @@
   "info": {
     "title": "Sellers Center API",
     "version": "1.0.0",
-    "description": "REST API to manage products and related data in the ABOUT YOU Seller Center."
+    "description": "REST API to manage products and related data in the ABOUT YOU Seller Center. \n\n**Rate limits:** Rate limits are configured per endpoint and vary depending on the operation. Current limits and remaining quota are provided in `X-RateLimit-Limit` and `X-RateLimit-Remaining` response headers. See individual endpoint documentation for specific rate limit details."
   },
   "paths": {
     "/api/v1/webhooks/types": {
@@ -44,8 +44,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Webhooks"
         ],
@@ -94,8 +111,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Webhooks"
         ],
@@ -138,8 +172,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Webhooks"
         ],
@@ -214,8 +265,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Webhooks"
         ],
@@ -271,8 +339,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Webhooks"
         ],
@@ -335,8 +420,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Webhooks"
         ],
@@ -746,8 +848,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 1000 requests per minute",
         "tags": [
           "Products"
         ],
@@ -790,8 +909,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Products"
         ],
@@ -893,9 +1029,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
-        "description": "Get all rejected product masters with their rejection reasons.",
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Products"
         ],
@@ -940,9 +1092,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
-        "description": "Update product status (e.g., publish to marketplace).\n\nWhen publishing a product, some data becomes immutable, e.g. SKUs and sizes can only be added, not modified.",
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Products"
         ],
@@ -987,8 +1155,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 1000 requests per minute",
         "tags": [
           "Products"
         ],
@@ -1043,8 +1228,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Products"
         ],
@@ -1170,8 +1372,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Categories"
         ],
@@ -1210,8 +1429,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 300 requests per minute",
         "tags": [
           "Categories"
         ],
@@ -1256,8 +1492,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Countries"
         ],
@@ -1286,8 +1539,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Brands"
         ],
@@ -1353,8 +1623,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -1420,8 +1707,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -1487,8 +1791,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -1554,8 +1875,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -1621,8 +1959,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -1688,8 +2043,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -1755,8 +2127,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Results"
         ],
@@ -2000,8 +2389,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Orders"
         ],
@@ -2056,8 +2462,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 100 requests per minute",
         "tags": [
           "Orders"
         ],
@@ -2102,8 +2525,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Orders"
         ],
@@ -2158,8 +2598,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Orders"
         ],
@@ -2214,8 +2671,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 50 requests per minute",
         "tags": [
           "Orders"
         ],
@@ -2335,8 +2809,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 10 requests per minute",
         "tags": [
           "Reports"
         ],
@@ -2411,8 +2902,25 @@
                 }
               }
             }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         },
+        "description": "**Rate limit:** 10 requests per minute",
         "tags": [
           "Reports"
         ],

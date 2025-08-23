@@ -1955,6 +1955,7 @@ export type GetApiV1WebhooksTypesErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1WebhooksTypesError = GetApiV1WebhooksTypesErrors[keyof GetApiV1WebhooksTypesErrors];
@@ -1985,6 +1986,7 @@ export type GetApiV1WebhooksErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1WebhooksError = GetApiV1WebhooksErrors[keyof GetApiV1WebhooksErrors];
@@ -2015,6 +2017,7 @@ export type PostApiV1WebhooksErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PostApiV1WebhooksError = PostApiV1WebhooksErrors[keyof PostApiV1WebhooksErrors];
@@ -2053,6 +2056,7 @@ export type DeleteApiV1WebhooksBySubscriptionIdErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type DeleteApiV1WebhooksBySubscriptionIdError = DeleteApiV1WebhooksBySubscriptionIdErrors[keyof DeleteApiV1WebhooksBySubscriptionIdErrors];
@@ -2091,6 +2095,7 @@ export type GetApiV1WebhooksBySubscriptionIdErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1WebhooksBySubscriptionIdError = GetApiV1WebhooksBySubscriptionIdErrors[keyof GetApiV1WebhooksBySubscriptionIdErrors];
@@ -2129,6 +2134,7 @@ export type PatchApiV1WebhooksBySubscriptionIdErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type PatchApiV1WebhooksBySubscriptionIdError = PatchApiV1WebhooksBySubscriptionIdErrors[keyof PatchApiV1WebhooksBySubscriptionIdErrors];
@@ -2310,6 +2316,7 @@ export type GetApiV1ProductsErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ProductsError = GetApiV1ProductsErrors[keyof GetApiV1ProductsErrors];
@@ -2339,6 +2346,7 @@ export type PostApiV1ProductsErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PostApiV1ProductsError = PostApiV1ProductsErrors[keyof PostApiV1ProductsErrors];
@@ -2384,6 +2392,7 @@ export type GetApiV1ProductsRejectedErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ProductsRejectedError = GetApiV1ProductsRejectedErrors[keyof GetApiV1ProductsRejectedErrors];
@@ -2413,6 +2422,7 @@ export type PutApiV1ProductsStatusErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PutApiV1ProductsStatusError = PutApiV1ProductsStatusErrors[keyof PutApiV1ProductsStatusErrors];
@@ -2438,6 +2448,7 @@ export type PutApiV1ProductsStocksErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PutApiV1ProductsStocksError = PutApiV1ProductsStocksErrors[keyof PutApiV1ProductsStocksErrors];
@@ -2467,6 +2478,7 @@ export type PutApiV1ProductsPricesErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PutApiV1ProductsPricesError = PutApiV1ProductsPricesErrors[keyof PutApiV1ProductsPricesErrors];
@@ -2517,6 +2529,7 @@ export type GetApiV1CategoriesErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1CategoriesError = GetApiV1CategoriesErrors[keyof GetApiV1CategoriesErrors];
@@ -2540,6 +2553,10 @@ export type GetApiV1CategoriesByCategoryIdAttributeGroupsData = {
     };
     query?: never;
     url: '/api/v1/categories/{category_id}/attribute-groups';
+};
+
+export type GetApiV1CategoriesByCategoryIdAttributeGroupsErrors = {
+    default: unknown;
 };
 
 export type GetApiV1CategoriesByCategoryIdAttributeGroupsResponses = {
@@ -2568,6 +2585,7 @@ export type GetApiV1CountriesErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1CountriesError = GetApiV1CountriesErrors[keyof GetApiV1CountriesErrors];
@@ -2586,6 +2604,10 @@ export type GetApiV1BrandsData = {
     path?: never;
     query?: never;
     url: '/api/v1/brands/';
+};
+
+export type GetApiV1BrandsErrors = {
+    default: unknown;
 };
 
 export type GetApiV1BrandsResponses = {
@@ -2623,6 +2645,7 @@ export type GetApiV1ResultsProductsErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsProductsError = GetApiV1ResultsProductsErrors[keyof GetApiV1ResultsProductsErrors];
@@ -2661,6 +2684,7 @@ export type GetApiV1ResultsStatusErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsStatusError = GetApiV1ResultsStatusErrors[keyof GetApiV1ResultsStatusErrors];
@@ -2699,6 +2723,7 @@ export type GetApiV1ResultsStocksErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsStocksError = GetApiV1ResultsStocksErrors[keyof GetApiV1ResultsStocksErrors];
@@ -2737,6 +2762,7 @@ export type GetApiV1ResultsPricesErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsPricesError = GetApiV1ResultsPricesErrors[keyof GetApiV1ResultsPricesErrors];
@@ -2775,6 +2801,7 @@ export type GetApiV1ResultsCancelOrdersErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsCancelOrdersError = GetApiV1ResultsCancelOrdersErrors[keyof GetApiV1ResultsCancelOrdersErrors];
@@ -2813,6 +2840,7 @@ export type GetApiV1ResultsReturnOrdersErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsReturnOrdersError = GetApiV1ResultsReturnOrdersErrors[keyof GetApiV1ResultsReturnOrdersErrors];
@@ -2851,6 +2879,7 @@ export type GetApiV1ResultsShipOrdersErrors = {
      * Not Found
      */
     404: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ResultsShipOrdersError = GetApiV1ResultsShipOrdersErrors[keyof GetApiV1ResultsShipOrdersErrors];
@@ -2935,6 +2964,7 @@ export type GetApiV1OrdersErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1OrdersError = GetApiV1OrdersErrors[keyof GetApiV1OrdersErrors];
@@ -2977,6 +3007,10 @@ export type GetApiV1OrdersByOrderNumberDeliveryDocumentErrors = {
 
 export type GetApiV1OrdersByOrderNumberDeliveryDocumentError = GetApiV1OrdersByOrderNumberDeliveryDocumentErrors[keyof GetApiV1OrdersByOrderNumberDeliveryDocumentErrors];
 
+export type GetApiV1OrdersByOrderNumberDeliveryDocumentResponses = {
+    default: unknown;
+};
+
 export type PostApiV1OrdersCancelData = {
     body: CancelRequestSchema;
     path?: never;
@@ -2993,6 +3027,7 @@ export type PostApiV1OrdersCancelErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PostApiV1OrdersCancelError = PostApiV1OrdersCancelErrors[keyof PostApiV1OrdersCancelErrors];
@@ -3022,6 +3057,7 @@ export type PostApiV1OrdersShipErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PostApiV1OrdersShipError = PostApiV1OrdersShipErrors[keyof PostApiV1OrdersShipErrors];
@@ -3051,6 +3087,7 @@ export type PostApiV1OrdersReturnErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type PostApiV1OrdersReturnError = PostApiV1OrdersReturnErrors[keyof PostApiV1OrdersReturnErrors];
@@ -3101,6 +3138,7 @@ export type GetApiV1ReportsErrors = {
      * Unauthorized
      */
     401: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1ReportsError = GetApiV1ReportsErrors[keyof GetApiV1ReportsErrors];
@@ -3150,6 +3188,10 @@ export type GetApiV1ReportsByReportIdDownloadErrors = {
 };
 
 export type GetApiV1ReportsByReportIdDownloadError = GetApiV1ReportsByReportIdDownloadErrors[keyof GetApiV1ReportsByReportIdDownloadErrors];
+
+export type GetApiV1ReportsByReportIdDownloadResponses = {
+    default: unknown;
+};
 
 export type ClientOptions = {
     baseURL: string;
