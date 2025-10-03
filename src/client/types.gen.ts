@@ -1333,6 +1333,11 @@ export type CategorySchema = {
      */
     parent_id?: number | null;
     /**
+     * Material Composition Type
+     * Material composition type based on mandatory attribute groups
+     */
+    material_composition_type?: ('textile' | 'non-textile') | null;
+    /**
      * Parent
      */
     parent?: number | null;

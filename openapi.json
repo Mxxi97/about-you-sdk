@@ -5653,6 +5653,26 @@
             ],
             "title": "Parent Id"
           },
+          "material_composition_type": {
+            "anyOf": [
+              {
+                "enum": [
+                  "textile",
+                  "non-textile"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Material composition type based on mandatory attribute groups",
+            "examples": [
+              "textile",
+              "non-textile"
+            ],
+            "title": "Material Composition Type"
+          },
           "parent": {
             "anyOf": [
               {
