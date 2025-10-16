@@ -2210,12 +2210,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
+              "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"DPD_PL\", \"UB_POST_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_SEUR_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"DPD_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"DPD_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
               "q": "carrier_key__icontains",
               "title": "Carrier Key"
             },
             "required": false,
-            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\"."
+            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"DPD_PL\", \"UB_POST_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_SEUR_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"DPD_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"DPD_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\"."
           },
           {
             "in": "query",
@@ -5830,11 +5830,19 @@
             },
             "title": "Locales",
             "type": "array"
+          },
+          "currencies": {
+            "items": {
+              "$ref": "#/components/schemas/CurrencySchema"
+            },
+            "title": "Currencies",
+            "type": "array"
           }
         },
         "required": [
           "countries",
-          "locales"
+          "locales",
+          "currencies"
         ],
         "title": "CountriesAndLocalesResponseSchema",
         "type": "object"
@@ -5855,6 +5863,29 @@
           "name"
         ],
         "title": "CountrySchema",
+        "type": "object"
+      },
+      "CurrencySchema": {
+        "properties": {
+          "country_code": {
+            "title": "Country Code",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "country_code",
+          "code",
+          "name"
+        ],
+        "title": "CurrencySchema",
         "type": "object"
       },
       "LocaleSchema": {
@@ -6380,6 +6411,8 @@
           "POST_NL",
           "DHL_NL",
           "DHL_PL",
+          "DPD_PL",
+          "UB_POST_PL",
           "PPL",
           "ZASIL_CZ",
           "BPOST_BE",
@@ -6388,8 +6421,10 @@
           "UB_GLS_DK",
           "UB_CORR_ES",
           "DS_TB_ES",
+          "UB_SEUR_ES",
           "UB_CTT_PT",
           "DS_TB_PT",
+          "DPD_PT",
           "ECONT_BG",
           "ACS_CY",
           "UB_OMNIVA_EE",
@@ -6399,6 +6434,7 @@
           "POST_HR",
           "POST_HU",
           "GLS_HU",
+          "DPD_HU",
           "UB_FAST_IE",
           "POST_IT",
           "DS_TB_IT",
@@ -6578,7 +6614,7 @@
                 "type": "null"
               }
             ],
-            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
+            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"DPD_PL\", \"UB_POST_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_SEUR_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"DPD_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"DPD_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
             "q": "carrier_key__icontains",
             "title": "Carrier Key"
           },
