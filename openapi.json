@@ -2616,7 +2616,7 @@
             }
           }
         },
-        "description": "**Rate limit:** 50 requests per minute",
+        "description": "**Rate limit:** 200 requests per minute",
         "tags": [
           "Orders"
         ],

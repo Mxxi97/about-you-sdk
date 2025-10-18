@@ -802,7 +802,7 @@ export const postApiV1OrdersCancel = <ThrowOnError extends boolean = false>(opti
 
 /**
  * Ship Order Items
- * **Rate limit:** 50 requests per minute
+ * **Rate limit:** 200 requests per minute
  */
 export const postApiV1OrdersShip = <ThrowOnError extends boolean = false>(options: Options<PostApiV1OrdersShipData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<PostApiV1OrdersShipResponses, PostApiV1OrdersShipErrors, ThrowOnError>({
