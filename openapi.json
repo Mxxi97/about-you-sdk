@@ -4893,7 +4893,7 @@
               100.0
             ],
             "exclusiveMinimum": 0,
-            "maximum": 10000.0,
+            "maximum": 1000000.0,
             "title": "Retail Price",
             "type": "number"
           },
@@ -4901,7 +4901,7 @@
             "anyOf": [
               {
                 "exclusiveMinimum": 0,
-                "maximum": 10000.0,
+                "maximum": 1000000.0,
                 "type": "number"
               },
               {
