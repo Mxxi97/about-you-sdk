@@ -2472,6 +2472,10 @@ export type PutApiV1ProductsStocksData = {
 
 export type PutApiV1ProductsStocksErrors = {
     /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
      * Unauthorized
      */
     401: BadRequestSchema;
