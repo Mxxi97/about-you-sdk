@@ -3034,13 +3034,58 @@ export type GetApiV1OrdersByOrderNumberDeliveryDocumentErrors = {
      * Internal Server Error
      */
     500: BadRequestSchema;
+    default: unknown;
 };
 
 export type GetApiV1OrdersByOrderNumberDeliveryDocumentError = GetApiV1OrdersByOrderNumberDeliveryDocumentErrors[keyof GetApiV1OrdersByOrderNumberDeliveryDocumentErrors];
 
 export type GetApiV1OrdersByOrderNumberDeliveryDocumentResponses = {
+    /**
+     * OK
+     */
+    200: Blob | File;
+};
+
+export type GetApiV1OrdersByOrderNumberDeliveryDocumentResponse = GetApiV1OrdersByOrderNumberDeliveryDocumentResponses[keyof GetApiV1OrdersByOrderNumberDeliveryDocumentResponses];
+
+export type GetApiV1OrdersByOrderNumberInvoiceData = {
+    body?: never;
+    path: {
+        /**
+         * Order Number
+         */
+        order_number: string;
+    };
+    query?: never;
+    url: '/api/v1/orders/{order_number}/invoice';
+};
+
+export type GetApiV1OrdersByOrderNumberInvoiceErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+    /**
+     * Internal Server Error
+     */
+    500: BadRequestSchema;
     default: unknown;
 };
+
+export type GetApiV1OrdersByOrderNumberInvoiceError = GetApiV1OrdersByOrderNumberInvoiceErrors[keyof GetApiV1OrdersByOrderNumberInvoiceErrors];
+
+export type GetApiV1OrdersByOrderNumberInvoiceResponses = {
+    /**
+     * OK
+     */
+    200: Blob | File;
+};
+
+export type GetApiV1OrdersByOrderNumberInvoiceResponse = GetApiV1OrdersByOrderNumberInvoiceResponses[keyof GetApiV1OrdersByOrderNumberInvoiceResponses];
 
 export type PostApiV1OrdersCancelData = {
     body: CancelRequestSchema;
