@@ -4594,17 +4594,6 @@
             ],
             "title": "Ean"
           },
-          "hs_code": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Hs Code"
-          },
           "name": {
             "anyOf": [
               {
@@ -4799,7 +4788,6 @@
           "status",
           "sku",
           "ean",
-          "hs_code",
           "name",
           "description",
           "descriptions",
@@ -5108,12 +5096,19 @@
             "title": "Ean"
           },
           "hs_code": {
+            "anyOf": [
+              {
+                "maxLength": 20,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "examples": [
               "1234.56"
             ],
-            "maxLength": 20,
-            "title": "Hs Code",
-            "type": "string"
+            "title": "Hs Code"
           },
           "name": {
             "anyOf": [
@@ -5344,7 +5339,6 @@
         "required": [
           "style_key",
           "sku",
-          "hs_code",
           "color",
           "size",
           "brand",

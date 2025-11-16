@@ -807,10 +807,6 @@ export type GetProductItemSchema = {
      */
     ean: string | null;
     /**
-     * Hs Code
-     */
-    hs_code: string | null;
-    /**
      * Name
      */
     name: string | null;
@@ -1041,7 +1037,7 @@ export type UpsertProductItemSchema = {
     /**
      * Hs Code
      */
-    hs_code: string;
+    hs_code?: string | null;
     /**
      * Name
      * Include only the product/design name. Don't add categories, colors, materials etc. If there is no specific design name, leave the field empty.
