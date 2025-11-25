@@ -1901,7 +1901,7 @@ export type ListReportsParams = {
     type?: ReportType | null;
     /**
      * Search query
-     * Search query to filter reports by number.
+     * Search query to filter reports by ID.
      */
     query?: string | null;
 };
@@ -1936,11 +1936,6 @@ export type ReportSchema = {
      */
     type: ReportType;
     /**
-     * Number
-     * Report number
-     */
-    number: string;
-    /**
      * File Name
      * Name of the report file
      */
@@ -1950,6 +1945,11 @@ export type ReportSchema = {
      * URL to download the report file
      */
     file_url: string;
+    /**
+     * Date
+     * Report date extracted from filename
+     */
+    date: string | null;
     /**
      * Created At
      * When the report was created
@@ -3184,7 +3184,7 @@ export type GetApiV1ReportsData = {
         type?: ReportType | null;
         /**
          * Search query
-         * Search query to filter reports by number.
+         * Search query to filter reports by ID.
          */
         query?: string | null;
         /**

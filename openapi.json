@@ -2849,12 +2849,12 @@
                   "type": "null"
                 }
               ],
-              "description": "Search query to filter reports by number.",
-              "q": "number__icontains",
+              "description": "Search query to filter reports by ID.",
+              "q": "id__icontains",
               "title": "Search query"
             },
             "required": false,
-            "description": "Search query to filter reports by number."
+            "description": "Search query to filter reports by ID."
           },
           {
             "in": "query",
@@ -5324,7 +5324,7 @@
           "images": {
             "examples": [
               [
-                "https://aboutyou.com/image_1500x2000.jpg"
+                "https://aboutyou.com/image.jpg"
               ]
             ],
             "items": {
@@ -6896,8 +6896,8 @@
                 "type": "null"
               }
             ],
-            "description": "Search query to filter reports by number.",
-            "q": "number__icontains",
+            "description": "Search query to filter reports by ID.",
+            "q": "id__icontains",
             "title": "Search query"
           }
         },
@@ -6953,16 +6953,6 @@
               "WAREHOUSE_MOVEMENTS"
             ]
           },
-          "number": {
-            "description": "Report number",
-            "examples": [
-              "REP-001",
-              "REP-002"
-            ],
-            "maxLength": 255,
-            "title": "Number",
-            "type": "string"
-          },
           "file_name": {
             "description": "Name of the report file",
             "examples": [
@@ -6978,6 +6968,22 @@
             ],
             "title": "File Url",
             "type": "string"
+          },
+          "date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Report date extracted from filename",
+            "examples": [
+              "2024-11-16"
+            ],
+            "title": "Date"
           },
           "created_at": {
             "description": "When the report was created",
@@ -7001,9 +7007,9 @@
         "required": [
           "id",
           "type",
-          "number",
           "file_name",
           "file_url",
+          "date",
           "created_at",
           "updated_at"
         ],
