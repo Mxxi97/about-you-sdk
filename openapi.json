@@ -6044,6 +6044,7 @@
           "pending",
           "processing",
           "completed",
+          "retry",
           "failed"
         ],
         "title": "RequestStatus",
