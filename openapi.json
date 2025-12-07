@@ -5077,21 +5077,22 @@
               "my_sku_1"
             ],
             "maxLength": 120,
+            "minLength": 3,
             "title": "Sku",
             "type": "string"
           },
           "ean": {
             "anyOf": [
               {
-                "maxLength": 20,
                 "type": "string"
               },
               {
                 "type": "null"
               }
             ],
+            "description": "EAN-13 barcode (13 digits with valid GS1 prefix and checksum)",
             "examples": [
-              "1234567890123"
+              "4006381333900"
             ],
             "title": "Ean"
           },

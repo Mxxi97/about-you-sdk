@@ -1032,6 +1032,7 @@ export type UpsertProductItemSchema = {
     sku: string;
     /**
      * Ean
+     * EAN-13 barcode (13 digits with valid GS1 prefix and checksum)
      */
     ean?: string | null;
     /**
