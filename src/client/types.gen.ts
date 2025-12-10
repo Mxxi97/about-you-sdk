@@ -1203,7 +1203,7 @@ export type UpdateProductStatusItemSchema = {
     /**
      * Status you want to set for the given product
      */
-    status: ProductStatusChoices;
+    status: string;
 };
 
 /**
@@ -1328,12 +1328,12 @@ export type CategorySchema = {
      * Parent Id
      * ID of the parent category or null if it's a root category
      */
-    parent_id?: number | null;
+    parent_id: number | null;
     /**
      * Material Composition Type
      * Material composition type based on mandatory attribute groups
      */
-    material_composition_type?: ('textile' | 'non-textile') | null;
+    material_composition_type: ('textile' | 'non-textile') | null;
     /**
      * Parent
      */

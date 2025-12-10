@@ -5259,7 +5259,8 @@
             },
             "minItems": 0,
             "title": "Countries",
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
           },
           "country_of_origin": {
             "description": "ISO 3166-1 alpha-2 country code",
@@ -5284,7 +5285,8 @@
               "type": "integer"
             },
             "title": "Attributes",
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
           },
           "material_composition_textile": {
             "anyOf": [
@@ -5504,13 +5506,13 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/ProductStatusChoices",
             "description": "Status you want to set for the given product",
             "examples": [
               "published",
               "inactive",
               "draft"
-            ]
+            ],
+            "type": "string"
           }
         },
         "required": [
@@ -5788,7 +5790,9 @@
         "required": [
           "id",
           "name",
-          "path"
+          "path",
+          "parent_id",
+          "material_composition_type"
         ],
         "title": "CategorySchema",
         "type": "object"
