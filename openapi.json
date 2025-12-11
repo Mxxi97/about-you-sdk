@@ -5259,8 +5259,7 @@
             },
             "minItems": 0,
             "title": "Countries",
-            "type": "array",
-            "uniqueItems": true
+            "type": "array"
           },
           "country_of_origin": {
             "description": "ISO 3166-1 alpha-2 country code",
@@ -5285,8 +5284,7 @@
               "type": "integer"
             },
             "title": "Attributes",
-            "type": "array",
-            "uniqueItems": true
+            "type": "array"
           },
           "material_composition_textile": {
             "anyOf": [
