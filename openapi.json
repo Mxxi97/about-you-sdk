@@ -1277,6 +1277,82 @@
         ]
       }
     },
+    "/api/v1/products/{sku}": {
+      "delete": {
+        "summary": "Delete Product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sku",
+            "schema": {
+              "title": "Sku",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "description": "**Rate limit:** 50 requests per minute",
+        "tags": [
+          "Products"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/categories/": {
       "get": {
         "summary": "List Categories",
@@ -2166,6 +2242,97 @@
         ]
       }
     },
+    "/api/v1/orders/carriers/": {
+      "get": {
+        "summary": "Get Carriers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "description": "Page number to retrieve items from.",
+              "minimum": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Page number to retrieve items from."
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 20,
+              "description": "Number of items per page.",
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Number of items per page."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedCarrierSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "description": "**Rate limit:** 100 requests per minute",
+        "tags": [
+          "Orders"
+        ],
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/orders/": {
       "get": {
         "summary": "Get Orders",
@@ -2214,18 +2381,18 @@
             "schema": {
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/Carrier"
+                  "type": "string"
                 },
                 {
                   "type": "null"
                 }
               ],
-              "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"DPD_PL\", \"UB_POST_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_SEUR_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"DPD_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"DPD_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
+              "description": "Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only).",
               "q": "carrier_key__icontains",
               "title": "Carrier Key"
             },
             "required": false,
-            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"DPD_PL\", \"UB_POST_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_SEUR_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"DPD_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"DPD_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\"."
+            "description": "Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only)."
           },
           {
             "in": "query",
@@ -3338,6 +3505,11 @@
             "title": "Order number",
             "type": "string"
           },
+          "carrier_key": {
+            "description": "Carrier key from the Carrier model.",
+            "title": "Carrier Key",
+            "type": "string"
+          },
           "delivery_document_url": {
             "title": "Delivery Document Url",
             "type": "string"
@@ -3349,12 +3521,6 @@
             "description": "Reference key of the customer (MAPI: customer_key)",
             "maxLength": 255,
             "title": "Customer Key",
-            "type": "string"
-          },
-          "carrier_key": {
-            "description": "Carrier key",
-            "maxLength": 255,
-            "title": "Carrier Key",
             "type": "string"
           },
           "shop": {
@@ -3627,10 +3793,10 @@
         "required": [
           "order_items",
           "order_number",
+          "carrier_key",
           "delivery_document_url",
           "status",
           "customer_key",
-          "carrier_key",
           "shop",
           "created_at",
           "updated_at",
@@ -6501,59 +6667,6 @@
         "title": "ReturnResultsSchema",
         "type": "object"
       },
-      "Carrier": {
-        "enum": [
-          "DHL_STD_NATIONAL",
-          "HERMES_KLV",
-          "HERMES_STD_NATIONAL",
-          "DHL_AT",
-          "DHL_POST_AUT",
-          "HERMES_POST_AUT",
-          "POST_CH",
-          "QUICK_CH",
-          "POST_NL",
-          "DHL_NL",
-          "DHL_PL",
-          "DPD_PL",
-          "UB_POST_PL",
-          "PPL",
-          "ZASIL_CZ",
-          "BPOST_BE",
-          "DHL_BPOST_BEL",
-          "COLI_FR",
-          "UB_GLS_DK",
-          "UB_CORR_ES",
-          "DS_TB_ES",
-          "UB_SEUR_ES",
-          "UB_CTT_PT",
-          "DS_TB_PT",
-          "DPD_PT",
-          "ECONT_BG",
-          "ACS_CY",
-          "UB_OMNIVA_EE",
-          "UB_POST_FI",
-          "UB_TAXY_GR",
-          "ACS_GR",
-          "POST_HR",
-          "POST_HU",
-          "GLS_HU",
-          "DPD_HU",
-          "UB_FAST_IE",
-          "POST_IT",
-          "DS_TB_IT",
-          "UB_OMNIVA_LT",
-          "BPOST_LU",
-          "UB_OMNIVA_LV",
-          "UB_POST_NO",
-          "FAN_RO",
-          "UB_DHL_SE",
-          "POST_SI",
-          "POST_SK",
-          "ZASIL_SK"
-        ],
-        "title": "Carrier",
-        "type": "string"
-      },
       "ShipmentItemSchema": {
         "properties": {
           "order_items": {
@@ -6573,8 +6686,9 @@
             "type": "array"
           },
           "carrier_key": {
-            "$ref": "#/components/schemas/Carrier",
-            "description": "Carrier of the shipment"
+            "description": "Carrier key of the shipment. Must be a valid active carrier key. Use GET /orders/carriers/ to retrieve available carrier keys.",
+            "title": "Carrier Key",
+            "type": "string"
           },
           "shipment_tracking_key": {
             "description": "Tracking key of the shipment",
@@ -6672,6 +6786,65 @@
         "title": "ShipmentResultItemSchema",
         "type": "object"
       },
+      "CarrierSchema": {
+        "properties": {
+          "country_code": {
+            "title": "Country Code",
+            "type": "string"
+          },
+          "display_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Label"
+          },
+          "key": {
+            "description": "Legacy carrier key used in Scayle integrations (e.g. DHL_STD_NATIONAL).",
+            "maxLength": 255,
+            "title": "Key",
+            "type": "string"
+          },
+          "carrier_name": {
+            "description": "Carrier name shown to merchants (e.g. DHL).",
+            "maxLength": 255,
+            "title": "Carrier Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "country_code",
+          "display_label",
+          "key",
+          "carrier_name"
+        ],
+        "title": "CarrierSchema",
+        "type": "object"
+      },
+      "PagedCarrierSchema": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CarrierSchema"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "required": [
+          "items",
+          "pagination"
+        ],
+        "title": "PagedCarrierSchema",
+        "type": "object"
+      },
       "FulfillmentTypes": {
         "enum": [
           "dropshipping",
@@ -6711,13 +6884,13 @@
           "carrier_key": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Carrier"
+                "type": "string"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "Carrier of the order to filter by. Choose from: \"DHL_STD_NATIONAL\", \"HERMES_KLV\", \"HERMES_STD_NATIONAL\", \"DHL_AT\", \"DHL_POST_AUT\", \"HERMES_POST_AUT\", \"POST_CH\", \"QUICK_CH\", \"POST_NL\", \"DHL_NL\", \"DHL_PL\", \"DPD_PL\", \"UB_POST_PL\", \"PPL\", \"ZASIL_CZ\", \"BPOST_BE\", \"DHL_BPOST_BEL\", \"COLI_FR\", \"UB_GLS_DK\", \"UB_CORR_ES\", \"DS_TB_ES\", \"UB_SEUR_ES\", \"UB_CTT_PT\", \"DS_TB_PT\", \"DPD_PT\", \"ECONT_BG\", \"ACS_CY\", \"UB_OMNIVA_EE\", \"UB_POST_FI\", \"UB_TAXY_GR\", \"ACS_GR\", \"POST_HR\", \"POST_HU\", \"GLS_HU\", \"DPD_HU\", \"UB_FAST_IE\", \"POST_IT\", \"DS_TB_IT\", \"UB_OMNIVA_LT\", \"BPOST_LU\", \"UB_OMNIVA_LV\", \"UB_POST_NO\", \"FAN_RO\", \"UB_DHL_SE\", \"POST_SI\", \"POST_SK\", \"ZASIL_SK\".",
+            "description": "Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only).",
             "q": "carrier_key__icontains",
             "title": "Carrier Key"
           },

@@ -153,6 +153,11 @@ export type GetOrderSchema = {
      */
     order_number: string;
     /**
+     * Carrier Key
+     * Carrier key from the Carrier model.
+     */
+    carrier_key: string;
+    /**
      * Delivery Document Url
      */
     delivery_document_url: string;
@@ -162,11 +167,6 @@ export type GetOrderSchema = {
      * Reference key of the customer (MAPI: customer_key)
      */
     customer_key: string;
-    /**
-     * Carrier Key
-     * Carrier key
-     */
-    carrier_key: string;
     /**
      * Shop
      */
@@ -1728,11 +1728,6 @@ export type ReturnResultsSchema = {
 };
 
 /**
- * Carrier
- */
-export type Carrier = 'DHL_STD_NATIONAL' | 'HERMES_KLV' | 'HERMES_STD_NATIONAL' | 'DHL_AT' | 'DHL_POST_AUT' | 'HERMES_POST_AUT' | 'POST_CH' | 'QUICK_CH' | 'POST_NL' | 'DHL_NL' | 'DHL_PL' | 'DPD_PL' | 'UB_POST_PL' | 'PPL' | 'ZASIL_CZ' | 'BPOST_BE' | 'DHL_BPOST_BEL' | 'COLI_FR' | 'UB_GLS_DK' | 'UB_CORR_ES' | 'DS_TB_ES' | 'UB_SEUR_ES' | 'UB_CTT_PT' | 'DS_TB_PT' | 'DPD_PT' | 'ECONT_BG' | 'ACS_CY' | 'UB_OMNIVA_EE' | 'UB_POST_FI' | 'UB_TAXY_GR' | 'ACS_GR' | 'POST_HR' | 'POST_HU' | 'GLS_HU' | 'DPD_HU' | 'UB_FAST_IE' | 'POST_IT' | 'DS_TB_IT' | 'UB_OMNIVA_LT' | 'BPOST_LU' | 'UB_OMNIVA_LV' | 'UB_POST_NO' | 'FAN_RO' | 'UB_DHL_SE' | 'POST_SI' | 'POST_SK' | 'ZASIL_SK';
-
-/**
  * ShipmentItemSchema
  */
 export type ShipmentItemSchema = {
@@ -1742,9 +1737,10 @@ export type ShipmentItemSchema = {
      */
     order_items: Array<number>;
     /**
-     * Carrier of the shipment
+     * Carrier Key
+     * Carrier key of the shipment. Must be a valid active carrier key. Use GET /orders/carriers/ to retrieve available carrier keys.
      */
-    carrier_key: Carrier;
+    carrier_key: string;
     /**
      * Shipment Tracking Key
      * Tracking key of the shipment
@@ -1793,6 +1789,41 @@ export type ShipmentResultItemSchema = {
 };
 
 /**
+ * CarrierSchema
+ */
+export type CarrierSchema = {
+    /**
+     * Country Code
+     */
+    country_code: string;
+    /**
+     * Display Label
+     */
+    display_label: string | null;
+    /**
+     * Key
+     * Legacy carrier key used in Scayle integrations (e.g. DHL_STD_NATIONAL).
+     */
+    key: string;
+    /**
+     * Carrier Name
+     * Carrier name shown to merchants (e.g. DHL).
+     */
+    carrier_name: string;
+};
+
+/**
+ * PagedCarrierSchema
+ */
+export type PagedCarrierSchema = {
+    /**
+     * Items
+     */
+    items: Array<CarrierSchema>;
+    pagination: Pagination;
+};
+
+/**
  * FulfillmentTypes
  */
 export type FulfillmentTypes = 'dropshipping' | 'fulfillment_by_marketplace';
@@ -1813,9 +1844,9 @@ export type GetOrderParams = {
     customer_key?: string | null;
     /**
      * Carrier Key
-     * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "DPD_PL", "UB_POST_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_SEUR_ES", "UB_CTT_PT", "DS_TB_PT", "DPD_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "DPD_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
+     * Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only).
      */
-    carrier_key?: Carrier | null;
+    carrier_key?: string | null;
     /**
      * Shop country
      * Shop country to search for.
@@ -2520,6 +2551,45 @@ export type PutApiV1ProductsPricesResponses = {
 
 export type PutApiV1ProductsPricesResponse = PutApiV1ProductsPricesResponses[keyof PutApiV1ProductsPricesResponses];
 
+export type DeleteApiV1ProductsBySkuData = {
+    body?: never;
+    path: {
+        /**
+         * Sku
+         */
+        sku: string;
+    };
+    query?: never;
+    url: '/api/v1/products/{sku}';
+};
+
+export type DeleteApiV1ProductsBySkuErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+    /**
+     * Not Found
+     */
+    404: BadRequestSchema;
+    default: unknown;
+};
+
+export type DeleteApiV1ProductsBySkuError = DeleteApiV1ProductsBySkuErrors[keyof DeleteApiV1ProductsBySkuErrors];
+
+export type DeleteApiV1ProductsBySkuResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DeleteApiV1ProductsBySkuResponse = DeleteApiV1ProductsBySkuResponses[keyof DeleteApiV1ProductsBySkuResponses];
+
 export type GetApiV1CategoriesData = {
     body?: never;
     path?: never;
@@ -2921,6 +2991,47 @@ export type GetApiV1ResultsShipOrdersResponses = {
 
 export type GetApiV1ResultsShipOrdersResponse = GetApiV1ResultsShipOrdersResponses[keyof GetApiV1ResultsShipOrdersResponses];
 
+export type GetApiV1OrdersCarriersData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Page
+         * Page number to retrieve items from.
+         */
+        page?: number;
+        /**
+         * Per Page
+         * Number of items per page.
+         */
+        per_page?: number;
+    };
+    url: '/api/v1/orders/carriers/';
+};
+
+export type GetApiV1OrdersCarriersErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+    default: unknown;
+};
+
+export type GetApiV1OrdersCarriersError = GetApiV1OrdersCarriersErrors[keyof GetApiV1OrdersCarriersErrors];
+
+export type GetApiV1OrdersCarriersResponses = {
+    /**
+     * OK
+     */
+    200: PagedCarrierSchema;
+};
+
+export type GetApiV1OrdersCarriersResponse = GetApiV1OrdersCarriersResponses[keyof GetApiV1OrdersCarriersResponses];
+
 export type GetApiV1OrdersData = {
     body?: never;
     path?: never;
@@ -2937,9 +3048,9 @@ export type GetApiV1OrdersData = {
         customer_key?: string | null;
         /**
          * Carrier Key
-         * Carrier of the order to filter by. Choose from: "DHL_STD_NATIONAL", "HERMES_KLV", "HERMES_STD_NATIONAL", "DHL_AT", "DHL_POST_AUT", "HERMES_POST_AUT", "POST_CH", "QUICK_CH", "POST_NL", "DHL_NL", "DHL_PL", "DPD_PL", "UB_POST_PL", "PPL", "ZASIL_CZ", "BPOST_BE", "DHL_BPOST_BEL", "COLI_FR", "UB_GLS_DK", "UB_CORR_ES", "DS_TB_ES", "UB_SEUR_ES", "UB_CTT_PT", "DS_TB_PT", "DPD_PT", "ECONT_BG", "ACS_CY", "UB_OMNIVA_EE", "UB_POST_FI", "UB_TAXY_GR", "ACS_GR", "POST_HR", "POST_HU", "GLS_HU", "DPD_HU", "UB_FAST_IE", "POST_IT", "DS_TB_IT", "UB_OMNIVA_LT", "BPOST_LU", "UB_OMNIVA_LV", "UB_POST_NO", "FAN_RO", "UB_DHL_SE", "POST_SI", "POST_SK", "ZASIL_SK".
+         * Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only).
          */
-        carrier_key?: Carrier | null;
+        carrier_key?: string | null;
         /**
          * Shop country
          * Shop country to search for.
