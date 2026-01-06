@@ -2388,7 +2388,7 @@
                 }
               ],
               "description": "Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only).",
-              "q": "carrier_key__icontains",
+              "q": "carrier__key__icontains",
               "title": "Carrier Key"
             },
             "required": false,
@@ -4158,16 +4158,9 @@
             "type": "array"
           },
           "carrier_key": {
-            "anyOf": [
-              {
-                "maxLength": 255,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Carrier Key"
+            "description": "Carrier key of the shipment",
+            "title": "Carrier key",
+            "type": "string"
           },
           "return_tracking_key": {
             "anyOf": [
@@ -4195,7 +4188,8 @@
           }
         },
         "required": [
-          "items"
+          "items",
+          "carrier_key"
         ],
         "title": "GetShipmentSchema",
         "type": "object"
@@ -6891,7 +6885,7 @@
               }
             ],
             "description": "Carrier key of the order to filter by. Available carrier keys can be retrieved from the Carrier model (active carriers only).",
-            "q": "carrier_key__icontains",
+            "q": "carrier__key__icontains",
             "title": "Carrier Key"
           },
           "shop_country": {

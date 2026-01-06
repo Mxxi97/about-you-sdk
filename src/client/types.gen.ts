@@ -499,9 +499,10 @@ export type GetShipmentSchema = {
      */
     items: Array<OrderItemSchema>;
     /**
-     * Carrier Key
+     * Carrier key
+     * Carrier key of the shipment
      */
-    carrier_key?: string | null;
+    carrier_key: string;
     /**
      * Return Tracking Key
      */
