@@ -3196,6 +3196,45 @@ export type GetApiV1OrdersByOrderNumberInvoiceResponses = {
 
 export type GetApiV1OrdersByOrderNumberInvoiceResponse = GetApiV1OrdersByOrderNumberInvoiceResponses[keyof GetApiV1OrdersByOrderNumberInvoiceResponses];
 
+export type GetApiV1OrdersByOrderNumberInvoicesData = {
+    body?: never;
+    path: {
+        /**
+         * Order Number
+         */
+        order_number: string;
+    };
+    query?: never;
+    url: '/api/v1/orders/{order_number}/invoices';
+};
+
+export type GetApiV1OrdersByOrderNumberInvoicesErrors = {
+    /**
+     * Bad Request
+     */
+    400: BadRequestSchema;
+    /**
+     * Unauthorized
+     */
+    401: BadRequestSchema;
+    /**
+     * Internal Server Error
+     */
+    500: BadRequestSchema;
+    default: unknown;
+};
+
+export type GetApiV1OrdersByOrderNumberInvoicesError = GetApiV1OrdersByOrderNumberInvoicesErrors[keyof GetApiV1OrdersByOrderNumberInvoicesErrors];
+
+export type GetApiV1OrdersByOrderNumberInvoicesResponses = {
+    /**
+     * OK
+     */
+    200: Blob | File;
+};
+
+export type GetApiV1OrdersByOrderNumberInvoicesResponse = GetApiV1OrdersByOrderNumberInvoicesResponses[keyof GetApiV1OrdersByOrderNumberInvoicesResponses];
+
 export type PostApiV1OrdersCancelData = {
     body: CancelRequestSchema;
     path?: never;

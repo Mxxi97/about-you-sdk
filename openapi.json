@@ -2756,6 +2756,91 @@
         "tags": [
           "Orders"
         ],
+        "deprecated": true,
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/orders/{order_number}/invoices": {
+      "get": {
+        "summary": "Get Order Invoices",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "order_number",
+            "schema": {
+              "title": "Order Number",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestSchema"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "default": {
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Total requests allowed in the time window",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Remaining requests in the current window",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "description": "**Rate limit:** 10 requests per minute",
+        "tags": [
+          "Orders"
+        ],
         "security": [
           {
             "APIKeyAuth": []
