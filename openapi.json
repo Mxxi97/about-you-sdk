@@ -2817,6 +2817,12 @@
                   "type": "string",
                   "format": "binary"
                 }
+              },
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
               }
             }
           },
