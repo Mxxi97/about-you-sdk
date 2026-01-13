@@ -3797,6 +3797,7 @@
                 "type": "null"
               }
             ],
+            "default": "",
             "description": "Shipping collection point key",
             "title": "Shipping Collection Point Key"
           },
@@ -3810,21 +3811,9 @@
                 "type": "null"
               }
             ],
+            "default": "",
             "description": "Shipping collection point type",
             "title": "Shipping Collection Point Type"
-          },
-          "shipping_collection_point_customer_key": {
-            "anyOf": [
-              {
-                "maxLength": 255,
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Shipping collection point customer key",
-            "title": "Shipping Collection Point Customer Key"
           },
           "shipping_collection_point_description": {
             "anyOf": [
@@ -3836,8 +3825,37 @@
                 "type": "null"
               }
             ],
+            "default": "",
             "description": "Shipping collection point description",
             "title": "Shipping Collection Point Description"
+          },
+          "customer_phone": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "",
+            "description": "Customer phone number for collection point delivery notifications",
+            "title": "Customer Phone"
+          },
+          "customer_email": {
+            "anyOf": [
+              {
+                "maxLength": 255,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "",
+            "description": "Customer email address for collection point delivery notifications",
+            "title": "Customer Email"
           },
           "shipping_recipient_gender": {
             "anyOf": [
@@ -5825,6 +5843,22 @@
             "minimum": 0,
             "title": "Quantity",
             "type": "integer"
+          },
+          "valid_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Merchant-reported timestamp indicating when this stock data was valid. Used for stale data detection to prevent older updates from overwriting newer data.",
+            "examples": [
+              "2025-01-15T10:30:00Z"
+            ],
+            "title": "Valid At"
           }
         },
         "required": [
@@ -5885,6 +5919,22 @@
           },
           "price": {
             "$ref": "#/components/schemas/PriceSchema"
+          },
+          "valid_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Merchant-reported timestamp indicating when this price data was valid. Used for stale data detection to prevent older updates from overwriting newer data.",
+            "examples": [
+              "2025-01-15T10:30:00Z"
+            ],
+            "title": "Valid At"
           }
         },
         "required": [

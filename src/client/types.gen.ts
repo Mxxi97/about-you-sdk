@@ -272,15 +272,20 @@ export type GetOrderSchema = {
      */
     shipping_collection_point_type?: string | null;
     /**
-     * Shipping Collection Point Customer Key
-     * Shipping collection point customer key
-     */
-    shipping_collection_point_customer_key?: string | null;
-    /**
      * Shipping Collection Point Description
      * Shipping collection point description
      */
     shipping_collection_point_description?: string | null;
+    /**
+     * Customer Phone
+     * Customer phone number for collection point delivery notifications
+     */
+    customer_phone?: string | null;
+    /**
+     * Customer Email
+     * Customer email address for collection point delivery notifications
+     */
+    customer_email?: string | null;
     /**
      * Shipping Recipient Gender
      * Gender of the recipient
@@ -1243,6 +1248,11 @@ export type UpdateStockItemSchema = {
      * Quantity to update
      */
     quantity: number;
+    /**
+     * Valid At
+     * Merchant-reported timestamp indicating when this stock data was valid. Used for stale data detection to prevent older updates from overwriting newer data.
+     */
+    valid_at?: string | null;
 };
 
 /**
@@ -1277,6 +1287,11 @@ export type UpdatePriceItemSchema = {
      */
     sku: string;
     price: PriceSchema;
+    /**
+     * Valid At
+     * Merchant-reported timestamp indicating when this price data was valid. Used for stale data detection to prevent older updates from overwriting newer data.
+     */
+    valid_at?: string | null;
 };
 
 /**
