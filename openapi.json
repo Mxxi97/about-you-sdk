@@ -3089,11 +3089,11 @@
                   "type": "null"
                 }
               ],
-              "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\".",
+              "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\", \"DAC7\".",
               "title": "Report type"
             },
             "required": false,
-            "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\"."
+            "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\", \"DAC7\"."
           },
           {
             "in": "query",
@@ -7196,7 +7196,7 @@
                 "type": "null"
               }
             ],
-            "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\".",
+            "description": "Filter by report type. Choose from: \"SELLABLE_STOCK\", \"WAREHOUSE_MOVEMENTS\", \"DAC7\".",
             "title": "Report type"
           },
           "query": {
@@ -7219,7 +7219,8 @@
       "ReportType": {
         "enum": [
           "SELLABLE_STOCK",
-          "WAREHOUSE_MOVEMENTS"
+          "WAREHOUSE_MOVEMENTS",
+          "DAC7"
         ],
         "title": "ReportType",
         "type": "string"

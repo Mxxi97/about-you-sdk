@@ -1944,7 +1944,7 @@ export type ReturnRequestSchema = {
 export type ListReportsParams = {
     /**
      * Report type
-     * Filter by report type. Choose from: "SELLABLE_STOCK", "WAREHOUSE_MOVEMENTS".
+     * Filter by report type. Choose from: "SELLABLE_STOCK", "WAREHOUSE_MOVEMENTS", "DAC7".
      */
     type?: ReportType | null;
     /**
@@ -1957,7 +1957,7 @@ export type ListReportsParams = {
 /**
  * ReportType
  */
-export type ReportType = 'SELLABLE_STOCK' | 'WAREHOUSE_MOVEMENTS';
+export type ReportType = 'SELLABLE_STOCK' | 'WAREHOUSE_MOVEMENTS' | 'DAC7';
 
 /**
  * PagedReportSchema
@@ -3346,7 +3346,7 @@ export type GetApiV1ReportsData = {
     query?: {
         /**
          * Report type
-         * Filter by report type. Choose from: "SELLABLE_STOCK", "WAREHOUSE_MOVEMENTS".
+         * Filter by report type. Choose from: "SELLABLE_STOCK", "WAREHOUSE_MOVEMENTS", "DAC7".
          */
         type?: ReportType | null;
         /**
