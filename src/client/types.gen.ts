@@ -1207,7 +1207,11 @@ export type UpdateProductStatusItemSchema = {
      */
     style_key: string;
     /**
-     * Status you want to set for the given product
+     * Status you want to set for the given product.
+     * `published` moves the product toward approval and eventually marks it active,
+     * `inactive` keeps it hidden after it was activated,
+     * `draft` keeps it in preparation and out of the catalog until manual publication begins.
+     * Reverting to `draft` is only supported before the product reaches approval, after which one should use `inactive`.
      */
     status: string;
 };

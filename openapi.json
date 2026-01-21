@@ -5773,7 +5773,7 @@
             "type": "string"
           },
           "status": {
-            "description": "Status you want to set for the given product",
+            "description": "Status you want to set for the given product.\n`published` moves the product toward approval and eventually marks it active,\n`inactive` keeps it hidden after it was activated,\n`draft` keeps it in preparation and out of the catalog until manual publication begins.\nReverting to `draft` is only supported before the product reaches approval, after which one should use `inactive`.",
             "examples": [
               "published",
               "inactive",
