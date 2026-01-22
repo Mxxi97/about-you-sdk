@@ -3358,13 +3358,7 @@
             "type": "array"
           },
           "url": {
-            "examples": [
-              "https://example.com",
-              "https://example.com/end-point"
-            ],
-            "format": "uri",
-            "maxLength": 2083,
-            "minLength": 1,
+            "description": "The URL of the webhook endpoint.",
             "title": "Url",
             "type": "string"
           },
@@ -3422,13 +3416,7 @@
             "type": "array"
           },
           "url": {
-            "examples": [
-              "https://example.com",
-              "https://example.com/end-point"
-            ],
-            "format": "uri",
-            "maxLength": 2083,
-            "minLength": 1,
+            "description": "The URL of the webhook endpoint.",
             "title": "Url",
             "type": "string"
           },
@@ -3606,7 +3594,10 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/orders_app__models__order__Order__StatusChoices"
+            "default": "open",
+            "maxLength": 255,
+            "title": "Status",
+            "type": "string"
           },
           "customer_key": {
             "description": "Reference key of the customer (MAPI: customer_key)",
@@ -3904,7 +3895,6 @@
           "order_number",
           "carrier_key",
           "delivery_document_url",
-          "status",
           "customer_key",
           "shop",
           "created_at",
@@ -3927,15 +3917,15 @@
       "OrderCreatedWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order.created",
@@ -3944,7 +3934,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -3974,7 +3963,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4011,7 +3999,10 @@
             "type": "string"
           },
           "status": {
-            "$ref": "#/components/schemas/orders_app__models__order_item__OrderItem__StatusChoices"
+            "default": "open",
+            "maxLength": 255,
+            "title": "Status",
+            "type": "string"
           },
           "id": {
             "anyOf": [
@@ -4057,46 +4048,24 @@
           "return_tracking_key",
           "shipment_tracking_key",
           "sku",
-          "status",
           "price_without_tax",
           "price_with_tax"
         ],
         "title": "OrderItemSchema",
         "type": "object"
       },
-      "orders_app__models__order__Order__StatusChoices": {
-        "enum": [
-          "open",
-          "shipped",
-          "cancelled",
-          "returned",
-          "mixed"
-        ],
-        "title": "StatusChoices",
-        "type": "string"
-      },
-      "orders_app__models__order_item__OrderItem__StatusChoices": {
-        "enum": [
-          "open",
-          "shipped",
-          "cancelled",
-          "returned"
-        ],
-        "title": "StatusChoices",
-        "type": "string"
-      },
       "OrderCancelledWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order.cancelled",
@@ -4105,7 +4074,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4135,7 +4103,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4145,15 +4112,15 @@
       "OrderShippedWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order.shipped",
@@ -4162,7 +4129,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4192,7 +4158,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4202,15 +4167,15 @@
       "OrderReturnedWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order.returned",
@@ -4219,7 +4184,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4249,7 +4213,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4259,11 +4222,10 @@
       "GetShipmentSchema": {
         "properties": {
           "items": {
-            "description": "List of order items in this shipment",
             "items": {
-              "$ref": "#/components/schemas/OrderItemSchema"
+              "type": "integer"
             },
-            "title": "Shipment items",
+            "title": "Items",
             "type": "array"
           },
           "carrier_key": {
@@ -4306,15 +4268,15 @@
       "ShipmentItemsShippedWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order_items.shipped",
@@ -4323,7 +4285,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4353,35 +4314,24 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
         "title": "ShipmentItemsShippedWebhookSchema",
         "type": "object"
       },
-      "StatusChoices": {
-        "enum": [
-          "open",
-          "shipped",
-          "cancelled",
-          "returned"
-        ],
-        "title": "StatusChoices",
-        "type": "string"
-      },
       "ShipmentItemsCancelledWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order_items.cancelled",
@@ -4390,7 +4340,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4420,7 +4369,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4430,15 +4378,15 @@
       "ShipmentItemsReturnedWebhookSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "order_items.returned",
@@ -4447,7 +4395,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4477,7 +4424,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4487,15 +4433,15 @@
       "StockWebhookMessageSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "stock.updated",
@@ -4504,7 +4450,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4538,7 +4483,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -4611,7 +4555,8 @@
             "title": "External Reference Key"
           },
           "status": {
-            "description": "Current status of the product master",
+            "default": "draft",
+            "maxLength": 50,
             "title": "Status",
             "type": "string"
           },
@@ -4639,43 +4584,37 @@
                 "type": "null"
               }
             ],
-            "description": "Rejection message if the product master is rejected",
+            "description": "The rejection message for the product master",
             "title": "Rejection Message"
           },
           "rejected_product_ids_hint": {
             "anyOf": [
               {
-                "items": {
-                  "type": "string"
-                },
-                "type": "array"
+                "type": "object"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "Hint about which products are affected by rejection",
+            "description": "Used to hint which products are affected by the rejection reason given",
             "title": "Rejected Product Ids Hint"
           }
         },
-        "required": [
-          "status"
-        ],
         "title": "GetProductMasterSchema",
         "type": "object"
       },
       "ProductMasterStatusUpdatedWebhookMessageSchema": {
         "properties": {
           "id": {
-            "description": "ID of the webhook message",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "event": {
             "const": "product_master.status_updated",
@@ -4684,7 +4623,6 @@
             "type": "string"
           },
           "timestamp": {
-            "description": "UTC timestamp when the event was created",
             "format": "date-time",
             "title": "Timestamp",
             "type": "string"
@@ -4714,7 +4652,6 @@
           }
         },
         "required": [
-          "id",
           "event",
           "message"
         ],
@@ -5516,19 +5453,26 @@
             "type": "integer"
           },
           "countries": {
-            "items": {
-              "description": "ISO 3166-1 alpha-2 country code",
-              "examples": [
-                "DE",
-                "FR",
-                "UK"
-              ],
-              "pattern": "^[A-Za-z]{2}$",
-              "type": "string"
-            },
-            "minItems": 0,
-            "title": "Countries",
-            "type": "array"
+            "anyOf": [
+              {
+                "items": {
+                  "description": "ISO 3166-1 alpha-2 country code",
+                  "examples": [
+                    "DE",
+                    "FR",
+                    "UK"
+                  ],
+                  "pattern": "^[A-Za-z]{2}$",
+                  "type": "string"
+                },
+                "minItems": 0,
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Countries"
           },
           "country_of_origin": {
             "description": "ISO 3166-1 alpha-2 country code",
@@ -5614,7 +5558,6 @@
           "brand",
           "category",
           "weight",
-          "countries",
           "country_of_origin",
           "attributes",
           "prices",
@@ -5905,6 +5848,58 @@
         "title": "UpdatePriceResponseSchema",
         "type": "object"
       },
+      "PriceSchemaNullable": {
+        "properties": {
+          "country_code": {
+            "description": "ISO 3166-1 alpha-2 country code",
+            "examples": [
+              "DE",
+              "FR",
+              "UK"
+            ],
+            "pattern": "^[A-Za-z]{2}$",
+            "title": "Country Code",
+            "type": "string"
+          },
+          "retail_price": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "maximum": 1000000.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "examples": [
+              100.0
+            ],
+            "title": "Retail Price"
+          },
+          "sale_price": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "maximum": 1000000.0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "examples": [
+              80.0
+            ],
+            "title": "Sale Price"
+          }
+        },
+        "required": [
+          "country_code"
+        ],
+        "title": "PriceSchemaNullable",
+        "type": "object"
+      },
       "UpdatePriceItemSchema": {
         "properties": {
           "sku": {
@@ -5918,7 +5913,7 @@
             "type": "string"
           },
           "price": {
-            "$ref": "#/components/schemas/PriceSchema"
+            "$ref": "#/components/schemas/PriceSchemaNullable"
           },
           "valid_at": {
             "anyOf": [
@@ -6003,30 +5998,24 @@
       "CategorySchema": {
         "properties": {
           "id": {
-            "description": "ID (integer) of this property",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "name": {
             "description": "Name of the category",
-            "examples": [
-              "Caps"
-            ],
             "maxLength": 255,
             "title": "Name",
             "type": "string"
           },
           "path": {
-            "description": "Path of the category for display purposes",
-            "examples": [
-              "Fashion|Women|Caps"
-            ],
+            "description": "Path of the category. This is used for internal purposes, basically just for display.",
             "maxLength": 255,
             "title": "Path",
             "type": "string"
@@ -6087,11 +6076,8 @@
           }
         },
         "required": [
-          "id",
           "name",
-          "path",
-          "parent_id",
-          "material_composition_type"
+          "path"
         ],
         "title": "CategorySchema",
         "type": "object"
@@ -6126,56 +6112,37 @@
             "type": "array"
           },
           "id": {
-            "description": "ID (integer) of this property",
-            "examples": [
-              1,
-              2,
-              3
-            ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
-          },
-          "name": {
-            "description": "Name of the attribute group",
-            "examples": [
-              "type_of_hat"
-            ],
-            "maxLength": 255,
-            "minLength": 1,
-            "title": "Name",
-            "type": "string"
-          },
-          "frontend_name": {
-            "description": "Name of the attribute group for display purposes",
-            "examples": [
-              "Hat Style"
-            ],
-            "maxLength": 255,
-            "minLength": 1,
-            "title": "Frontend Name",
-            "type": "string"
-          },
-          "is_multiselect": {
             "anyOf": [
               {
-                "type": "boolean"
+                "type": "integer"
               },
               {
                 "type": "null"
               }
             ],
-            "description": "Whether the group allows multiple attributes to be selected",
-            "examples": [
-              true,
-              false
-            ],
-            "title": "Is Multiselect"
+            "title": "ID"
+          },
+          "name": {
+            "description": "Name of the attribute group",
+            "maxLength": 255,
+            "title": "Name",
+            "type": "string"
+          },
+          "frontend_name": {
+            "description": "Frontend name of the attribute group",
+            "maxLength": 255,
+            "title": "Frontend Name",
+            "type": "string"
+          },
+          "is_multiselect": {
+            "default": false,
+            "description": "Multiselect",
+            "title": "Is Multiselect",
+            "type": "boolean"
           }
         },
         "required": [
           "attributes",
-          "id",
           "name",
           "frontend_name"
         ],
@@ -6185,33 +6152,30 @@
       "AttributeSchema": {
         "properties": {
           "id": {
-            "description": "ID (integer) of this property",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "name": {
-            "description": "Name of the attribute",
+            "description": "Name of the attribute (from SCAYLE)",
             "maxLength": 255,
-            "minLength": 1,
             "title": "Name",
             "type": "string"
           },
           "frontend_name": {
             "description": "Name of the attribute for display purposes",
             "maxLength": 255,
-            "minLength": 1,
             "title": "Frontend Name",
             "type": "string"
           }
         },
         "required": [
-          "id",
           "name",
           "frontend_name"
         ],
@@ -6312,15 +6276,15 @@
       "BrandSchema": {
         "properties": {
           "id": {
-            "description": "ID (integer) of this property",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "key": {
             "description": "Identifier of the brand",
@@ -6328,15 +6292,13 @@
             "type": "string"
           },
           "name": {
-            "description": "Name of the brand",
+            "description": "Name of the attribute (from SCAYLE)",
             "maxLength": 255,
-            "minLength": 1,
             "title": "Name",
             "type": "string"
           }
         },
         "required": [
-          "id",
           "key",
           "name"
         ],
@@ -6924,18 +6886,22 @@
       "CarrierSchema": {
         "properties": {
           "country_code": {
+            "description": "Market/country this carrier belongs to (ISO 3166-1 alpha-2).",
+            "maxLength": 2,
             "title": "Country Code",
             "type": "string"
           },
           "display_label": {
             "anyOf": [
               {
+                "maxLength": 255,
                 "type": "string"
               },
               {
                 "type": "null"
               }
             ],
+            "description": "Optional label; defaults to '<country_code>: <carrier_name>' when empty.",
             "title": "Display Label"
           },
           "key": {
@@ -6953,7 +6919,6 @@
         },
         "required": [
           "country_code",
-          "display_label",
           "key",
           "carrier_name"
         ],
@@ -7111,6 +7076,27 @@
         "title": "GetOrderParams",
         "type": "object"
       },
+      "orders_app__models__order__Order__StatusChoices": {
+        "enum": [
+          "open",
+          "shipped",
+          "cancelled",
+          "returned",
+          "mixed"
+        ],
+        "title": "StatusChoices",
+        "type": "string"
+      },
+      "orders_app__models__order_item__OrderItem__StatusChoices": {
+        "enum": [
+          "open",
+          "shipped",
+          "cancelled",
+          "returned"
+        ],
+        "title": "StatusChoices",
+        "type": "string"
+      },
       "PagedGetOrderSchema": {
         "properties": {
           "items": {
@@ -7248,29 +7234,23 @@
       "ReportSchema": {
         "properties": {
           "id": {
-            "description": "ID (integer) of this property",
-            "examples": [
-              1,
-              2,
-              3
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
             ],
-            "minimum": 1,
-            "title": "Id",
-            "type": "integer"
+            "title": "ID"
           },
           "type": {
-            "$ref": "#/components/schemas/ReportType",
-            "description": "Type of the report",
-            "examples": [
-              "SELLABLE_STOCK",
-              "WAREHOUSE_MOVEMENTS"
-            ]
+            "maxLength": 255,
+            "title": "Type",
+            "type": "string"
           },
           "file_name": {
-            "description": "Name of the report file",
-            "examples": [
-              "sellable_stock_report_123.csv"
-            ],
+            "maxLength": 255,
             "title": "File Name",
             "type": "string"
           },
@@ -7283,42 +7263,23 @@
             "type": "string"
           },
           "date": {
-            "anyOf": [
-              {
-                "format": "date",
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Report date extracted from filename",
-            "examples": [
-              "2024-11-16"
-            ],
-            "title": "Date"
+            "description": "Date extracted from the report filename",
+            "format": "date",
+            "title": "Report Date",
+            "type": "string"
           },
           "created_at": {
-            "description": "When the report was created",
-            "examples": [
-              "2024-01-01T12:00:00Z"
-            ],
             "format": "date-time",
             "title": "Created At",
             "type": "string"
           },
           "updated_at": {
-            "description": "When the report was last updated",
-            "examples": [
-              "2024-01-01T12:00:00Z"
-            ],
             "format": "date-time",
             "title": "Updated At",
             "type": "string"
           }
         },
         "required": [
-          "id",
           "type",
           "file_name",
           "file_url",

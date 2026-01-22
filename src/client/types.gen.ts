@@ -40,6 +40,7 @@ export type WebhookSubscriptionSchema = {
     events: Array<EventType>;
     /**
      * Url
+     * The URL of the webhook endpoint.
      */
     url: string;
     /**
@@ -72,6 +73,7 @@ export type SecretWebhookSubscriptionSchema = {
     events: Array<EventType>;
     /**
      * Url
+     * The URL of the webhook endpoint.
      */
     url: string;
     /**
@@ -161,7 +163,10 @@ export type GetOrderSchema = {
      * Delivery Document Url
      */
     delivery_document_url: string;
-    status: OrdersAppModelsOrderOrderStatusChoices;
+    /**
+     * Status
+     */
+    status?: string;
     /**
      * Customer Key
      * Reference key of the customer (MAPI: customer_key)
@@ -323,10 +328,9 @@ export type GetOrderSchema = {
  */
 export type OrderCreatedWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -334,7 +338,6 @@ export type OrderCreatedWebhookSchema = {
     event: 'order.created';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -365,7 +368,10 @@ export type OrderItemSchema = {
      * SKU of the product variant
      */
     sku: string;
-    status: OrdersAppModelsOrderItemOrderItemStatusChoices;
+    /**
+     * Status
+     */
+    status?: string;
     /**
      * ID
      */
@@ -395,24 +401,13 @@ export type OrderItemSchema = {
 };
 
 /**
- * StatusChoices
- */
-export type OrdersAppModelsOrderOrderStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned' | 'mixed';
-
-/**
- * StatusChoices
- */
-export type OrdersAppModelsOrderItemOrderItemStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
-
-/**
  * OrderCancelledWebhookSchema
  */
 export type OrderCancelledWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -420,7 +415,6 @@ export type OrderCancelledWebhookSchema = {
     event: 'order.cancelled';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -439,10 +433,9 @@ export type OrderCancelledWebhookSchema = {
  */
 export type OrderShippedWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -450,7 +443,6 @@ export type OrderShippedWebhookSchema = {
     event: 'order.shipped';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -469,10 +461,9 @@ export type OrderShippedWebhookSchema = {
  */
 export type OrderReturnedWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -480,7 +471,6 @@ export type OrderReturnedWebhookSchema = {
     event: 'order.returned';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -499,10 +489,9 @@ export type OrderReturnedWebhookSchema = {
  */
 export type GetShipmentSchema = {
     /**
-     * Shipment items
-     * List of order items in this shipment
+     * Items
      */
-    items: Array<OrderItemSchema>;
+    items: Array<number>;
     /**
      * Carrier key
      * Carrier key of the shipment
@@ -523,10 +512,9 @@ export type GetShipmentSchema = {
  */
 export type ShipmentItemsShippedWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -534,7 +522,6 @@ export type ShipmentItemsShippedWebhookSchema = {
     event: 'order_items.shipped';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -549,19 +536,13 @@ export type ShipmentItemsShippedWebhookSchema = {
 };
 
 /**
- * StatusChoices
- */
-export type StatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
-
-/**
  * ShipmentItemsCancelledWebhookSchema
  */
 export type ShipmentItemsCancelledWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -569,7 +550,6 @@ export type ShipmentItemsCancelledWebhookSchema = {
     event: 'order_items.cancelled';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -588,10 +568,9 @@ export type ShipmentItemsCancelledWebhookSchema = {
  */
 export type ShipmentItemsReturnedWebhookSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -599,7 +578,6 @@ export type ShipmentItemsReturnedWebhookSchema = {
     event: 'order_items.returned';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -618,10 +596,9 @@ export type ShipmentItemsReturnedWebhookSchema = {
  */
 export type StockWebhookMessageSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -629,7 +606,6 @@ export type StockWebhookMessageSchema = {
     event: 'stock.updated';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -676,9 +652,8 @@ export type GetProductMasterSchema = {
     external_reference_key?: string | null;
     /**
      * Status
-     * Current status of the product master
      */
-    status: string;
+    status?: string;
     /**
      * Rejection Reasons
      * Rejection reasons if the product master is rejected
@@ -686,14 +661,16 @@ export type GetProductMasterSchema = {
     rejection_reasons?: Array<RejectionReasonSchema> | null;
     /**
      * Rejection Message
-     * Rejection message if the product master is rejected
+     * The rejection message for the product master
      */
     rejection_message?: string | null;
     /**
      * Rejected Product Ids Hint
-     * Hint about which products are affected by rejection
+     * Used to hint which products are affected by the rejection reason given
      */
-    rejected_product_ids_hint?: Array<string> | null;
+    rejected_product_ids_hint?: {
+        [key: string]: unknown;
+    } | null;
 };
 
 /**
@@ -701,10 +678,9 @@ export type GetProductMasterSchema = {
  */
 export type ProductMasterStatusUpdatedWebhookMessageSchema = {
     /**
-     * Id
-     * ID of the webhook message
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Event
      * Event type of webhook message
@@ -712,7 +688,6 @@ export type ProductMasterStatusUpdatedWebhookMessageSchema = {
     event: 'product_master.status_updated';
     /**
      * Timestamp
-     * UTC timestamp when the event was created
      */
     timestamp?: string;
     /**
@@ -1093,7 +1068,7 @@ export type UpsertProductItemSchema = {
     /**
      * Countries
      */
-    countries: Array<string>;
+    countries?: Array<string> | null;
     /**
      * Country Of Origin
      * ISO 3166-1 alpha-2 country code
@@ -1282,6 +1257,25 @@ export type UpdatePriceResponseSchema = {
 };
 
 /**
+ * PriceSchemaNullable
+ */
+export type PriceSchemaNullable = {
+    /**
+     * Country Code
+     * ISO 3166-1 alpha-2 country code
+     */
+    country_code: string;
+    /**
+     * Retail Price
+     */
+    retail_price?: number | null;
+    /**
+     * Sale Price
+     */
+    sale_price?: number | null;
+};
+
+/**
  * UpdatePriceItemSchema
  */
 export type UpdatePriceItemSchema = {
@@ -1290,7 +1284,7 @@ export type UpdatePriceItemSchema = {
      * Stock Keeping Unit identifier
      */
     sku: string;
-    price: PriceSchema;
+    price: PriceSchemaNullable;
     /**
      * Valid At
      * Merchant-reported timestamp indicating when this price data was valid. Used for stale data detection to prevent older updates from overwriting newer data.
@@ -1330,10 +1324,9 @@ export type ListCategoriesParams = {
  */
 export type CategorySchema = {
     /**
-     * Id
-     * ID (integer) of this property
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Name
      * Name of the category
@@ -1341,19 +1334,19 @@ export type CategorySchema = {
     name: string;
     /**
      * Path
-     * Path of the category for display purposes
+     * Path of the category. This is used for internal purposes, basically just for display.
      */
     path: string;
     /**
      * Parent Id
      * ID of the parent category or null if it's a root category
      */
-    parent_id: number | null;
+    parent_id?: number | null;
     /**
      * Material Composition Type
      * Material composition type based on mandatory attribute groups
      */
-    material_composition_type: ('textile' | 'non-textile') | null;
+    material_composition_type?: ('textile' | 'non-textile') | null;
     /**
      * Parent
      */
@@ -1380,10 +1373,9 @@ export type AttributeGroupSchema = {
      */
     attributes: Array<AttributeSchema>;
     /**
-     * Id
-     * ID (integer) of this property
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Name
      * Name of the attribute group
@@ -1391,14 +1383,14 @@ export type AttributeGroupSchema = {
     name: string;
     /**
      * Frontend Name
-     * Name of the attribute group for display purposes
+     * Frontend name of the attribute group
      */
     frontend_name: string;
     /**
      * Is Multiselect
-     * Whether the group allows multiple attributes to be selected
+     * Multiselect
      */
-    is_multiselect?: boolean | null;
+    is_multiselect?: boolean;
 };
 
 /**
@@ -1406,13 +1398,12 @@ export type AttributeGroupSchema = {
  */
 export type AttributeSchema = {
     /**
-     * Id
-     * ID (integer) of this property
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Name
-     * Name of the attribute
+     * Name of the attribute (from SCAYLE)
      */
     name: string;
     /**
@@ -1491,10 +1482,9 @@ export type LocaleSchema = {
  */
 export type BrandSchema = {
     /**
-     * Id
-     * ID (integer) of this property
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
      * Key
      * Identifier of the brand
@@ -1502,7 +1492,7 @@ export type BrandSchema = {
     key: string;
     /**
      * Name
-     * Name of the brand
+     * Name of the attribute (from SCAYLE)
      */
     name: string;
 };
@@ -1814,12 +1804,14 @@ export type ShipmentResultItemSchema = {
 export type CarrierSchema = {
     /**
      * Country Code
+     * Market/country this carrier belongs to (ISO 3166-1 alpha-2).
      */
     country_code: string;
     /**
      * Display Label
+     * Optional label; defaults to '<country_code>: <carrier_name>' when empty.
      */
-    display_label: string | null;
+    display_label?: string | null;
     /**
      * Key
      * Legacy carrier key used in Scayle integrations (e.g. DHL_STD_NATIONAL).
@@ -1897,6 +1889,16 @@ export type GetOrderParams = {
      */
     fulfillment_type?: FulfillmentTypes | null;
 };
+
+/**
+ * StatusChoices
+ */
+export type OrdersAppModelsOrderOrderStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned' | 'mixed';
+
+/**
+ * StatusChoices
+ */
+export type OrdersAppModelsOrderItemOrderItemStatusChoices = 'open' | 'shipped' | 'cancelled' | 'returned';
 
 /**
  * PagedGetOrderSchema
@@ -1979,17 +1981,15 @@ export type PagedReportSchema = {
  */
 export type ReportSchema = {
     /**
-     * Id
-     * ID (integer) of this property
+     * ID
      */
-    id: number;
+    id?: number | null;
     /**
-     * Type of the report
+     * Type
      */
-    type: ReportType;
+    type: string;
     /**
      * File Name
-     * Name of the report file
      */
     file_name: string;
     /**
@@ -1998,18 +1998,16 @@ export type ReportSchema = {
      */
     file_url: string;
     /**
-     * Date
-     * Report date extracted from filename
+     * Report Date
+     * Date extracted from the report filename
      */
-    date: string | null;
+    date: string;
     /**
      * Created At
-     * When the report was created
      */
     created_at: string;
     /**
      * Updated At
-     * When the report was last updated
      */
     updated_at: string;
 };
