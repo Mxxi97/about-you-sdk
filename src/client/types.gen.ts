@@ -835,7 +835,7 @@ export type GetProductItemSchema = {
     /**
      * Countries
      */
-    countries: Array<string>;
+    countries: Array<string> | null;
     /**
      * Country Of Origin
      */
